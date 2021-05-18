@@ -1,0 +1,5 @@
+Reboot machine from a C#/WPF app
+https://stackoverflow.com/questions/1215139/reboot-machine-from-a-c-wpf-app
+
+https://stackoverflow.com/questions/102567/how-to-shut-down-the-computer-from-c-sharp
+https://stackoverflow.com/questions/102567/how-to-shut-down-the-computer-from-c-sharp?fbclid=IwAR0zf3ua3g2dYE3XTs6Qpp5jBWAcWeAzfnHUwUxK-iLcTH5ua0BfRlKTTzQ

@@ -1,0 +1,67 @@
+CREATE TABLE `tbl_Users` (
+	`UserId` INT(255) NOT NULL AUTO_INCREMENT,
+	`RFIDtag` varchar(11) NOT NULL,
+	`UTId` INT(255) NOT NULL,
+	PRIMARY KEY (`UserId`)
+);
+
+CREATE TABLE `tbl_UserType` (
+	`UTId` INT(255) NOT NULL AUTO_INCREMENT,
+	`StudentId` INT(10) NOT NULL,
+	`EmployeeId` INT(10) NOT NULL,
+	`VisitorId` INT(10) NOT NULL,
+	PRIMARY KEY (`UTId`)
+);
+
+CREATE TABLE `tbl_Department` (
+	`DepartmentId` INT(10) NOT NULL AUTO_INCREMENT,
+	`DepartmentName` varchar(10) NOT NULL,
+	PRIMARY KEY (`DepartmentId`)
+);
+
+CREATE TABLE `tbl_Courses` (
+	`CourseID` INT(10) NOT NULL AUTO_INCREMENT,
+	`CourseName` varchar(255) NOT NULL,
+	`DepartmentId` INT(10) NOT NULL,
+	PRIMARY KEY (`CourseID`)
+);
+
+CREATE TABLE `tbl_Visitor` (
+	`VisitorID` INT(10) NOT NULL AUTO_INCREMENT,
+	`LastName` varchar(255) NOT NULL,
+	`FirstName` varchar(255) NOT NULL,
+	`MiddleInitial` varchar(255) NOT NULL,
+	`School` varchar(255) NOT NULL,
+	PRIMARY KEY (`VisitorID`)
+);
+
+CREATE TABLE `tbl_Employee` (
+	`EmployeeId` INT(10) NOT NULL AUTO_INCREMENT,
+	`LastName` varchar(255) NOT NULL,
+	`FirstName` varchar(255) NOT NULL,
+	`MiddleInitial` varchar(255) NOT NULL,
+	`Position` varchar(255) NOT NULL,
+	PRIMARY KEY (`EmployeeId`)
+);
+
+CREATE TABLE `tbl_Student` (
+	`StudentId` INT(10) NOT NULL AUTO_INCREMENT,
+	`StudentId_no` varchar(250) NOT NULL,
+	`LastName` varchar(255) NOT NULL,
+	`FirstName` varchar(255) NOT NULL,
+	`MiddleInitial` varchar(255) NOT NULL,
+	`DepartmentId` INT(10) NOT NULL,
+	PRIMARY KEY (`StudentId`)
+);
+
+ALTER TABLE `tbl_Users` ADD CONSTRAINT `tbl_Users_fk0` FOREIGN KEY (`UTId`) REFERENCES `tbl_UserType`(`UTId`);
+
+ALTER TABLE `tbl_UserType` ADD CONSTRAINT `tbl_UserType_fk0` FOREIGN KEY (`StudentId`) REFERENCES `tbl_Student`(`StudentId`);
+
+ALTER TABLE `tbl_UserType` ADD CONSTRAINT `tbl_UserType_fk1` FOREIGN KEY (`EmployeeId`) REFERENCES `tbl_Employee`(`EmployeeId`);
+
+ALTER TABLE `tbl_UserType` ADD CONSTRAINT `tbl_UserType_fk2` FOREIGN KEY (`VisitorId`) REFERENCES `tbl_Visitor`(`VisitorID`);
+
+ALTER TABLE `tbl_Courses` ADD CONSTRAINT `tbl_Courses_fk0` FOREIGN KEY (`DepartmentId`) REFERENCES `tbl_Department`(`DepartmentId`);
+
+ALTER TABLE `tbl_Student` ADD CONSTRAINT `tbl_Student_fk0` FOREIGN KEY (`DepartmentId`) REFERENCES `tbl_Department`(`DepartmentId`);

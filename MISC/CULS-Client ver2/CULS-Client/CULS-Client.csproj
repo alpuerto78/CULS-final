@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9C7E9519-019D-44D0-B3F1-442D9575C45A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>CULS_Client</RootNamespace>
+    <AssemblyName>CULS-Client</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bunifu_UI_v1.52">
+      <HintPath>..\..\..\..\Desktop\Clients\Bunifu_UI_v1.52.dll</HintPath>
+    </Reference>
+    <Reference Include="INIFileParser, Version=2.5.2.0, Culture=neutral, PublicKeyToken=79af7b307b65cf3c, processorArchitecture=MSIL">
+      <HintPath>..\packages\ini-parser.2.5.2\lib\net20\INIFileParser.dll</HintPath>
+    </Reference>
+    <Reference Include="IPAddressControlLib, Version=1.3.5942.27121, Culture=neutral, PublicKeyToken=fe2f1b8a0821423a, processorArchitecture=MSIL">
+      <HintPath>..\packages\IPAddressControlLib.1.3.5942.27121\lib\net452\IPAddressControlLib.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialSkin.Updated.0.2.2\lib\MaterialSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Tulpep.NotificationWindow, Version=1.1.38.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Tulpep.NotificationWindow.1.1.38\lib\net40\Tulpep.NotificationWindow.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DB_conn.cs" />
+    <Compile Include="form_update_credential.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_update_credential.Designer.cs">
+      <DependentUpon>form_update_credential.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers.cs" />
+    <Compile Include="NetworkClient.cs" />
+    <Compile Include="ClientRequest.cs" />
+    <Compile Include="CmdClass.cs" />
+    <Compile Include="Digit_counter.cs" />
+    <Compile Include="form_admin_setting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_admin_setting.Designer.cs">
+      <DependentUpon>form_admin_setting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Initialization.cs" />
+    <Compile Include="form_Lockscreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_Lockscreen.Designer.cs">
+      <DependentUpon>form_Lockscreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Network.cs" />
+    <Compile Include="form_Configure_IPad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_Configure_IPad.Designer.cs">
+      <DependentUpon>form_Configure_IPad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NetworkCommand.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="form_Timer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_Timer.Designer.cs">
+      <DependentUpon>form_Timer.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="form_admin_setting.resx">
+      <DependentUpon>form_admin_setting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_Lockscreen.resx">
+      <DependentUpon>form_Lockscreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_update_credential.resx">
+      <DependentUpon>form_update_credential.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_Configure_IPad.resx">
+      <DependentUpon>form_Configure_IPad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="form_Timer.resx">
+      <DependentUpon>form_Timer.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

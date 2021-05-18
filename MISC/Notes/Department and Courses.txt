@@ -1,0 +1,125 @@
+CAM 
+	BS NURSING
+	BS MIDWIFERY
+	GS-MAN-MSN
+	GS-MAN-PN
+	FACULTY
+
+CAS
+	BS MATH
+	BS BIOLOGY
+	BA COMM
+	BA PSYCH
+	BA HISTORY
+	FACULTY
+
+CABHA
+	BS ACC
+	BSBA-FM
+	BSBA-HRDM
+	BSBA-MM
+	BS-HM
+	BPA
+	GS-MBA
+	GS-DBA
+	FACULTY
+CEN
+	BSCE
+	BSEE
+	BSEVE
+	BSIE
+	BSME
+	BSCpE
+	FACULTY
+CIT
+	BSIT-AT
+	BSIT-CPT
+	BSIT-ELX
+	BSIT-ELX
+	BSIT-FBT
+	BSIT-IDT
+	BSIT-MT
+	FACULTY
+COA
+	BAT
+	BS AGRI
+	BS ES
+	BS FOR
+	DAT
+	GS-MS ENVI. SCIE.
+	GS- MS FORESTRY
+	FACULTY
+CTE
+	BEED-PRE. SCHOOL
+	BEED-GEN.ED.
+	BEED-SPED
+	BSED-ENGLISH
+	BSED-FILIPINO
+	BSED-MAPEH
+	BSED-MATH
+	BSED-PSY SCIE
+	BSED- SOC. STUDIES
+	BSED-TLE
+	BSED-SCIENCE
+	BACAED
+	BTLED-HE
+CTE
+	BTLED-ICT
+	BTVTED-COM PRG
+	GS-MA EDUC. MGT.
+	GS-MAED ELM
+	GS-MA MATH ED
+	GS-MA SCIE ED
+	GS-MA APP. LING>
+	GS-MA TECHING ENG.
+	GS-PHD.DEV ED
+	GS-PHD. SCIE ED
+	GS-PHD.EDUC MGT
+	FACULTY
+IHK 
+	BSESS-FS
+	BPE-SWM
+	FACULTY
+LABHIGH
+	SH-STEM
+	SH-ABM
+	SH-HUMS
+	Jr. HIGH
+	FACULTY
+EMPLOYEE
+ALUMNI
+VISITOR
+
+
+alter datatype from a certain column
+ALTER TABLE tbl_department
+ALTER COLUMN [dept_description] varchar(250);
+GO
+	
+grid should be readonly
+
+alter/adding a column in an existing table
+ALTER TABLE tbl_course ADD course_descript varchar(250)
+droping table
+ALTER TABLE tbl_course
+DROP COLUMN course_descript;
+
+
+inner join mockup
+SELECT tbl_course.course_name, tbl_course.course_description, tbl_department.dept_id
+FROM tbl_department
+INNER JOIN tbl_course
+ON tbl_department.dept_id = tbl_course.dept_id;
+
+SELECT * FROM tblemployees
+INNER JOIN tbldepartment ON
+tblemployees.departmentid = tbldepartment.departmentid
+
+pangkuha ng value ng dept 
+SELECT tbl_department.dept_name,  tbl_department.dept_id
+FROM tbl_department
+INNER JOIN tbl_course
+ON tbl_department.dept_id = tbl_course.dept_id;
+
+
+

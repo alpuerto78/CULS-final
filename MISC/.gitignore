@@ -1,0 +1,13 @@
+CULS-SERVER/CULS-SERVER/obj
+CULS-SERVER/CULS-SERVER/bin
+CULS-SERVER/.vs
+
+CULS-Client/CULS-Client/obj
+CULS-Client/CULS-Client/bin
+CULS-Client/.vs
+
+*.pdb
+*.exe
+*.user
+*.cache
+*.suo

@@ -1,0 +1,468 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{29664CE9-94F1-4088-8809-2CEE83F1F598}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>CULS_SERVER</RootNamespace>
+    <AssemblyName>CULS-SERVER</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\Alpuerto\Desktop\Setup\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ProductName>CULS</ProductName>
+    <PublisherName>Team AA</PublisherName>
+    <SuiteName>Team AA</SuiteName>
+    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>CULS-SERVER.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>29532DAD1614B7D08020AB6E1AB26EC6D6ECC677</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>CULS-SERVER_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="Bunifu_UI_v1.52">
+      <HintPath>..\..\..\..\Desktop\Clients\Bunifu_UI_v1.52.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.Engine.13.0.4000\lib\net40\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.ClientDoc, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.ClientDoc.13.0.4000\lib\net40\CrystalDecisions.ReportAppServer.ClientDoc.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CommLayer, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.CommLayer.13.0.4000\lib\net40\CrystalDecisions.ReportAppServer.CommLayer.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CommonControls, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.CommonControls.13.0.4000\lib\net40\CrystalDecisions.ReportAppServer.CommonControls.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CommonObjectModel, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.CommonObjectModel.13.0.4000\lib\net40\CrystalDecisions.ReportAppServer.CommonObjectModel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.Controllers, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.Controllers.13.0.4000\lib\net40\CrystalDecisions.ReportAppServer.Controllers.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CubeDefModel, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.CubeDefModel.13.0.4000\lib\net40\CrystalDecisions.ReportAppServer.CubeDefModel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.DataDefModel, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.DataDefModel.13.0.4000\lib\net40\CrystalDecisions.ReportAppServer.DataDefModel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.DataSetConversion, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.DataSetConversion.13.0.4000\lib\net40\CrystalDecisions.ReportAppServer.DataSetConversion.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.ObjectFactory, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.ObjectFactory.13.0.4000\lib\net40\CrystalDecisions.ReportAppServer.ObjectFactory.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.Prompting, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.Prompting.13.0.4000\lib\net40\CrystalDecisions.ReportAppServer.Prompting.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.ReportDefModel, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.ReportDefModel.13.0.4000\lib\net40\CrystalDecisions.ReportAppServer.ReportDefModel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.XmlSerialize, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.XmlSerialize.13.0.4000\lib\net40\CrystalDecisions.ReportAppServer.XmlSerialize.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.Shared.13.0.4000\lib\net40\CrystalDecisions.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.WinForms, Version=0.9.7.1, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.WinForms.0.9.7.1\lib\net45\LiveCharts.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialSkin.0.2.1\lib\MaterialSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Card.cs" />
+    <Compile Include="DB_conn.cs" />
+    <Compile Include="DB_Handlers.cs" />
+    <Compile Include="DGVPrinter.cs" />
+    <Compile Include="form_add_time.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_add_time.Designer.cs">
+      <DependentUpon>form_add_time.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_annual_logs_view.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_annual_logs_view.Designer.cs">
+      <DependentUpon>form_annual_logs_view.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_annual_reports_fields.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_annual_reports_fields.Designer.cs">
+      <DependentUpon>form_annual_reports_fields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_configure_database.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_configure_database.Designer.cs">
+      <DependentUpon>form_configure_database.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_daily_logs_view.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_daily_logs_view.Designer.cs">
+      <DependentUpon>form_daily_logs_view.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_daily_reports_fields.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_daily_reports_fields.Designer.cs">
+      <DependentUpon>form_daily_reports_fields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_Dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_Dashboard.Designer.cs">
+      <DependentUpon>form_Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_course_add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_course_add.Designer.cs">
+      <DependentUpon>form_course_add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_department_add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_department_add.Designer.cs">
+      <DependentUpon>form_department_add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_manage_users.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_manage_users.Designer.cs">
+      <DependentUpon>form_manage_users.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_monthly_logs_view.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_monthly_logs_view.Designer.cs">
+      <DependentUpon>form_monthly_logs_view.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_monthly_reports_fields.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_monthly_reports_fields.Designer.cs">
+      <DependentUpon>form_monthly_reports_fields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_Preload.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_Preload.Designer.cs">
+      <DependentUpon>form_Preload.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_Terminal_Control.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_Terminal_Control.Designer.cs">
+      <DependentUpon>form_Terminal_Control.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_User_Sessions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_User_Sessions.Designer.cs">
+      <DependentUpon>form_User_Sessions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Handler.cs" />
+    <Compile Include="form_Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_Login.Designer.cs">
+      <DependentUpon>form_Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Network.cs" />
+    <Compile Include="NFCReader.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="form_SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_SplashScreen.Designer.cs">
+      <DependentUpon>form_SplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="reports_annual_logs.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>reports_annual_logs.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="reports_daily_logs.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>reports_daily_logs.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="reports_monthly_logs.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>reports_monthly_logs.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <EmbeddedResource Include="form_add_time.resx">
+      <DependentUpon>form_add_time.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_annual_logs_view.resx">
+      <DependentUpon>form_annual_logs_view.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_annual_reports_fields.resx">
+      <DependentUpon>form_annual_reports_fields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_configure_database.resx">
+      <DependentUpon>form_configure_database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_daily_logs_view.resx">
+      <DependentUpon>form_daily_logs_view.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_daily_reports_fields.resx">
+      <DependentUpon>form_daily_reports_fields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_Dashboard.resx">
+      <DependentUpon>form_Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_course_add.resx">
+      <DependentUpon>form_course_add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_department_add.resx">
+      <DependentUpon>form_department_add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_Login.aa.resx">
+      <DependentUpon>form_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_manage_users.resx">
+      <DependentUpon>form_manage_users.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_Login.resx">
+      <DependentUpon>form_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_monthly_logs_view.resx">
+      <DependentUpon>form_monthly_logs_view.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_monthly_reports_fields.resx">
+      <DependentUpon>form_monthly_reports_fields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_Preload.resx">
+      <DependentUpon>form_Preload.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_Terminal_Control.resx">
+      <DependentUpon>form_Terminal_Control.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_User_Sessions.resx">
+      <DependentUpon>form_User_Sessions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_SplashScreen.resx">
+      <DependentUpon>form_SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reports_annual_logs.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>reports_annual_logs.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reports_daily_logs.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>reports_daily_logs.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reports_monthly_logs.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>reports_monthly_logs.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
+    <None Include="CULS-SERVER_TemporaryKey.pfx" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon-DropDown-Maximize-Portable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon-DropDown-Minimize-Portable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon-ManageUsers-Ref.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon-Terminal-Offline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon-Terminal-Open-Session-Time-Limited.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon-terminal-control-restart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon-terminal-control-shutdown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon-terminal-control-logout-user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon-terminal-control-add-time.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ComputerUsageLimiterSystem.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ComputerUsageLimiterSystem_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CULS-SERVER.ico" />
+    <None Include="Resources\Icon-Terminal-Timeout.png" />
+    <None Include="Resources\Icon-Terminal-Unlimited.png" />
+    <None Include="Resources\Icon-Terminal-Limited.png" />
+    <None Include="Resources\Icon-Terminal-Idle.png" />
+    <None Include="Resources\Icon-Terminal-Time-Off.png" />
+    <None Include="Resources\Icon-Terminal-Time-About-To-End.png" />
+    <None Include="Resources\Icon-Terminal-Off-Computer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SqlServer.SqlLocalDB.15.0">
+      <Visible>False</Visible>
+      <ProductName>SQL Server 2019 Express LocalDB</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
