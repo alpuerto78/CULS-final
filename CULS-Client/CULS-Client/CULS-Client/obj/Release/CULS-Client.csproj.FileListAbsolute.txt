@@ -1,0 +1,9 @@
+C:\Users\Alpuerto\Documents\GitHub\Computer-Usage-Limiter-System\CULS Client\CULS-Client\CULS-Client\obj\Release\CULS-Client.csprojAssemblyReference.cache
+C:\Users\Alpuerto\Documents\GitHub\Computer-Usage-Limiter-System\CULS Client\CULS-Client\CULS-Client\obj\Release\CULS_Client.form_admin_setting.resources
+C:\Users\Alpuerto\Documents\GitHub\Computer-Usage-Limiter-System\CULS Client\CULS-Client\CULS-Client\obj\Release\CULS_Client.form_Lockscreen.resources
+C:\Users\Alpuerto\Documents\GitHub\Computer-Usage-Limiter-System\CULS Client\CULS-Client\CULS-Client\obj\Release\CULS_Client.form_update_credential.resources
+C:\Users\Alpuerto\Documents\GitHub\Computer-Usage-Limiter-System\CULS Client\CULS-Client\CULS-Client\obj\Release\CULS_Client.IP_Configuration.resources
+C:\Users\Alpuerto\Documents\GitHub\Computer-Usage-Limiter-System\CULS Client\CULS-Client\CULS-Client\obj\Release\CULS_Client.Properties.Resources.resources
+C:\Users\Alpuerto\Documents\GitHub\Computer-Usage-Limiter-System\CULS Client\CULS-Client\CULS-Client\obj\Release\CULS_Client.form_Timer.resources
+C:\Users\Alpuerto\Documents\GitHub\Computer-Usage-Limiter-System\CULS Client\CULS-Client\CULS-Client\obj\Release\CULS-Client.csproj.GenerateResource.cache
+C:\Users\Alpuerto\Documents\GitHub\Computer-Usage-Limiter-System\CULS Client\CULS-Client\CULS-Client\obj\Release\CULS-Client.csproj.CoreCompileInputs.cache
