@@ -356,7 +356,7 @@ namespace CULS_SERVER
             }
 
             tabcontrol_multipage_handler.SelectTab(tab_daily_report);
-                   lbl_pages.Text = "Manage User/Daily Report";
+                   lbl_pages.Text = "Reports/Daily Report";
             //      load_daily_logs_records();
             
         }
@@ -377,9 +377,9 @@ namespace CULS_SERVER
                 f1.ShowDialog();
             }
             tabcontrol_multipage_handler.SelectTab(tab_monthly_report);
-            lbl_pages.Text = "Manage User/Monthly Report";
-        //    dtpicker_sort_by_date_monthly_logs_mm.SelectedIndex = 0;
-          //  dtpicker_sort_by_date_monthly_logs_yyyy.SelectedIndex = 0;
+            lbl_pages.Text = "Reports/Monthly Report";
+            dtpicker_sort_by_date_monthly_logs_mm.SelectedIndex = 0;
+           dtpicker_sort_by_date_monthly_logs_yyyy.SelectedIndex = 0;
           
         }
 
@@ -458,7 +458,7 @@ namespace CULS_SERVER
             }
 
             tabcontrol_multipage_handler.SelectTab(tab_annual_report);
-            lbl_pages.Text = "Manage User/Annual Report";
+            lbl_pages.Text = "Reports/Annual Report";
             dtpicker_sort_by_date_annual_logs_yyyy.SelectedIndex = 0;
            
 
@@ -546,7 +546,6 @@ namespace CULS_SERVER
                 grid_dept.Rows.Clear();
                 int i = 0;
                 cn.Open();
-
                 cm = new SqlCommand("SELECT * FROM  tbl_department ORDER BY dept_id DESC", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
@@ -554,16 +553,13 @@ namespace CULS_SERVER
                     i++;
                     grid_dept.Rows.Add(i, dr["dept_id"].ToString(), dr["dept_name"].ToString(), dr["dept_description"].ToString());
                 }
-
                 dr.Close();
                 cn.Close();
             }
             catch (Exception ex)
             {
-                cn.Close();
                 MessageBox.Show(ex.Message, _title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
         }
 
 
@@ -647,7 +643,6 @@ namespace CULS_SERVER
                 grid_courses.Rows.Clear();
                 int i = 0;
                 cn.Open();
-
                 cm = new SqlCommand("SELECT * FROM  tbl_course ORDER BY course_id DESC", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
@@ -660,11 +655,8 @@ namespace CULS_SERVER
             }
             catch (Exception ex)
             {
-                cn.Close();
                 MessageBox.Show(ex.Message, _title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
             }
-
         }
 
 
@@ -882,6 +874,7 @@ namespace CULS_SERVER
         }
         public void _4thcardcounter()
         {
+
             try
             {
                 lbl_4th_card_counter.Text = "";
@@ -1131,8 +1124,7 @@ namespace CULS_SERVER
         }
         public void load_logs_records()
         {
-            string _currentdate = DateTime.Now.ToString("MM/dd/yyyy");
-           
+            string _currentdate = DateTime.Now.ToString("MM/dd/yyyy");       
             grid_student.Rows.Clear();
             try
             {
@@ -1169,16 +1161,6 @@ namespace CULS_SERVER
         }
         public void load_daily_logs_records()
         {
-            //------------pampabilis daw ng pagload ng data---------------------------------------///
-            //grid_daily_logs.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.EnableResizing;
-            //// or even better, use .DisableResizing. Most time consuming enum is DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
-
-            //// set it to false if not needed
-            //grid_daily_logs.RowHeadersVisible = false;
-
-            //--------------------------------------------------------------------------------------//
-
-
             string _currentdate = DateTime.Now.ToString("MM/dd/yyyy");
             dtpicker_sort_by_date_daily_logs.Text = DateTime.Now.ToString("MM/dd/yyyy");
             grid_daily_logs.Rows.Clear();
@@ -1225,18 +1207,6 @@ namespace CULS_SERVER
         public void load_monthly_logs_records()
         {
             string _yyyy_value = dtpicker_sort_by_date_monthly_logs_yyyy.Text;
-            //------------pampabilis daw ng pagload ng data---------------------------------------///
-            //grid_daily_logs.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.EnableResizing;
-            //// or even better, use .DisableResizing. Most time consuming enum is DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
-
-            //// set it to false if not needed
-            //grid_daily_logs.RowHeadersVisible = false;
-
-            //--------------------------------------------------------------------------------------//
-
-
-            //  string _currentdate = DateTime.Now.ToString("MM/dd/yyyy");
-            //  dtpicker_sort_by_date_daily_logs.Text = DateTime.Now.ToString("MM/dd/yyyy");
             grid_monthly_logs.Rows.Clear();
             try
             {
@@ -1258,8 +1228,6 @@ namespace CULS_SERVER
                 dr.Close();
                 cm.Parameters.Clear();
                 cn.Close();
-                //remove duplicate records
-                //tang ina ang hirap hahaha
                 string removeduplicatecells = grid_monthly_logs.Rows[0].Cells[0].Value.ToString();
                 for (int i = 1; i < grid_monthly_logs.Rows.Count; i++)
                 {
@@ -1281,18 +1249,6 @@ namespace CULS_SERVER
         }
         public void load_annual_logs_records()
         {
-            //------------pampabilis daw ng pagload ng data---------------------------------------///
-            //grid_daily_logs.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.EnableResizing;
-            //// or even better, use .DisableResizing. Most time consuming enum is DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
-
-            //// set it to false if not needed
-            //grid_daily_logs.RowHeadersVisible = false;
-
-            //--------------------------------------------------------------------------------------//
-
-
-           // string _currentdate = DateTime.Now.ToString("MM/dd/yyyy");
-           // dtpicker_sort_by_date_daily_logs.Text = DateTime.Now.ToString("MM/dd/yyyy");
             grid_annual_logs.Rows.Clear();
             try
             {
@@ -1307,14 +1263,11 @@ namespace CULS_SERVER
                 dr = cm.ExecuteReader();
                 while (dr.Read())
                 {
-
                     grid_annual_logs.Rows.Add(dr["dept_name"].ToString().ToUpper(), dr["course_name"].ToString().ToUpper(), dr["January"].ToString(), dr["February"].ToString(), dr["March"].ToString(), dr["April"].ToString(), dr["May"].ToString(), dr["June"].ToString(), dr["July"].ToString(), dr["August"].ToString(), dr["September"].ToString(), dr["October"].ToString(), dr["November"].ToString(), dr["December"].ToString(), dr["TOTAL"].ToString());
                 }
                 dr.Close();
                 cn.Close();
                 cm.Parameters.Clear();
-                //remove duplicate records
-                //tang ina ang hirap hahaha
                 string removeduplicatecells = grid_annual_logs.Rows[0].Cells[0].Value.ToString();
                 for (int i = 1; i < grid_annual_logs.Rows.Count; i++)
                 {
@@ -1449,9 +1402,7 @@ namespace CULS_SERVER
                
             }
             else if (colName == "stud_colDelete")
-            {
-                
-            
+            {                 
                 if (MessageBox.Show("Delete this record?", _title, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
                     cn.Open();
@@ -1459,22 +1410,20 @@ namespace CULS_SERVER
                     cm.ExecuteNonQuery();
                     //delete image in the folder
                     string paths = Application.StartupPath;
-                    string image_file = grid_student.Rows[e.RowIndex].Cells[9].Value.ToString();                   
+                    string image_file = grid_student.Rows[e.RowIndex].Cells[9].Value.ToString();               
                     try
                     {
                     System.IO.File.Delete(paths + image_file);
                     }
                     catch
                     {
-                        //wala lang error nito ay garbage cc usedby another process 
-                        //do nothing 
+                    //do nothing 
                     }
                     MessageBox.Show("Record has been successfully deleted.", _title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     cn.Close();
                     load_student_records();
                 }
             }
-
 
             //VIEW USER PROFILES AND LOG HISTORY
             else if ((colName == "UID") || (colName == "Student_ID") || (colName == "Firstname") || (colName == "Lastname") || (colName == "counter_data_student"))
@@ -1677,7 +1626,7 @@ namespace CULS_SERVER
            {
          
             form_Terminal_Control frmterminal = new form_Terminal_Control();
-
+            cn.Close();
             String tag = ((PictureBox)sender).Tag.ToString();
             try
             {              
@@ -1726,24 +1675,23 @@ namespace CULS_SERVER
                         case "TIMEOUT":
                             btn_terminal_control_logout.Enabled = true;
                             btn_terminal_control_add_time.Enabled = false;
-                            btn_terminal_control_restart.Enabled = true;
-                            btn_terminal_control_shutdown.Enabled = true;
-
+                            btn_terminal_control_restart.Enabled = false;
+                            btn_terminal_control_shutdown.Enabled = false;
                             break;
                         //edit_icon in the resources
                         case "LIMITED":
                             btn_terminal_control_logout.Enabled = true;
                             btn_terminal_control_add_time.Enabled = false;
-                            btn_terminal_control_restart.Enabled = true;
-                            btn_terminal_control_shutdown.Enabled = true;
+                            btn_terminal_control_restart.Enabled = false;
+                            btn_terminal_control_shutdown.Enabled = false;
 
                             break;
                         //edit icon in the resources
                         case "UNLIMITED":
                             btn_terminal_control_logout.Enabled = true;
                             btn_terminal_control_add_time.Enabled = false;
-                            btn_terminal_control_restart.Enabled = true;
-                            btn_terminal_control_shutdown.Enabled = true;
+                            btn_terminal_control_restart.Enabled = false;
+                            btn_terminal_control_shutdown.Enabled = false;
                             break;
                         default:
                             btn_terminal_control_logout.Enabled = false;
@@ -2174,17 +2122,12 @@ namespace CULS_SERVER
                                 });
                              //   announce(parts[1], username, true);
                                 break;
-
                             }
-                        case "pChat":
-                            privateChat(parts);
-                            break;
                     }
                     parts.Clear();
                 }
                 catch (Exception ex)
                 {
-               //    MessageBox.Show(ex.Message);
                     updateUI("Client Disconnected: " + username);
             //        announce("Client Disconnected: " + username + "$", username, false);
                     //update to terminal status to off
@@ -2255,59 +2198,36 @@ namespace CULS_SERVER
                     users.Clear();
                 }
             }
-            catch 
+            catch (Exception Ex)
             {
+                MessageBox.Show(Ex.Message, _title);
             }
         }
 
-        private void privateChat(List<string> text)
-        {
-            try
-            {           
-                byte[] byData = ObjectToByteArray(text);
-
-                TcpClient workerSocket = null;
-                workerSocket = (TcpClient)clientList.FirstOrDefault(x => x.Key == text[1]).Value; //find the client by username in dictionary
-
-                NetworkStream stm = workerSocket.GetStream();
-                stm.Write(byData, 0, byData.Length);
-                stm.Flush();
-            }
-            catch
-            {
-            }
-        }
-    
-
-        private void flpnl_terminals_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+ 
 
       //--------------------------------------------------------------------------//
       //SETTINGS
         private void button_settings_Click(object sender, EventArgs e)
         {
             tabcontrol_multipage_handler.SelectTab(tab_settings);
-            lbl_pages.Text = "Settings";
+            lbl_pages.Text = "Settings/Network Settings";
             cbo_settings_time_limit.SelectedIndex = 1;
             current_time_limit();
-
             network_settings_txtbox_ipadd.Text = GetLocalIPAddress();
             network_settings_txtbox_port.Text = "5000";
-
             database_settings_txt_server_name.Text=System.Net.Dns.GetHostName().ToUpper()+ @"\SQLEXPRESS";
             database_settings_combobox_database_selection.SelectedIndex = 0;
         }
 
         private void settings_tabpage_time_limit_Click(object sender, EventArgs e)
         {
-           
+          
         }
 
         private void settings_tabpage_network_Click(object sender, EventArgs e)
         {
-       
+         
         }
         public void current_time_limit()
         {
@@ -2356,7 +2276,6 @@ namespace CULS_SERVER
                         _time_limit_val = 15;
                         break;
                 }
-
                 //UPDATE TIME_REMAINING
                 try
                 {
@@ -2370,8 +2289,7 @@ namespace CULS_SERVER
                     cm.ExecuteNonQuery();
                     cn.Close();
                     cm.Parameters.Clear();
-                    //UPDATE ALL TIME_REMAINING IN USERS
-                    
+                    //UPDATE ALL TIME_REMAINING IN USERS                  
                     cn.Open();
                     cm.Connection = cn;
                     cm.CommandType = CommandType.StoredProcedure;
@@ -2415,6 +2333,7 @@ namespace CULS_SERVER
 
         private void btn_terminal_control_add_time_Click(object sender, EventArgs e)
         {
+            clear_login_user_credentials();
             tabcontrol_terminal.SelectTab(tab_add_time);
             pnl_add_time.Size = new Size(680
                 , 360
@@ -2533,7 +2452,9 @@ namespace CULS_SERVER
             {
                 clear_login_user_credentials();
             }
+            cn.Close();
             get_user_details();
+            cn.Close();
         }
 
         public List<string> ListReaders()
@@ -2604,9 +2525,10 @@ namespace CULS_SERVER
                     workerSocket = (TcpClient)clientList.FirstOrDefault(x => x.Key == clientName).Value;
                     //  TcpClient client = new TcpClient(("127.0.0.1"),int.Parse(txt_TCP_add_time.Text));
 
-                    NetworkStream stm = client.GetStream();
+                    NetworkStream stm = workerSocket.GetStream();
                     stm.Write(byData, 0, byData.Length);
                     stm.Flush();
+                    tabcontrol_terminal.SelectTab(tab_pc);
                 }
                 catch
                 {
@@ -2633,9 +2555,10 @@ namespace CULS_SERVER
                     workerSocket = (TcpClient)clientList.FirstOrDefault(x => x.Key == clientName).Value;
                     //  TcpClient client = new TcpClient(("127.0.0.1"),int.Parse(txt_TCP_add_time.Text));
 
-                    NetworkStream stm = client.GetStream();
+                    NetworkStream stm = workerSocket.GetStream();
                     stm.Write(byData, 0, byData.Length);
                     stm.Flush();
+                    tabcontrol_terminal.SelectTab(tab_pc);
                 }
                 catch
                 {
@@ -2663,9 +2586,10 @@ namespace CULS_SERVER
                     workerSocket = (TcpClient)clientList.FirstOrDefault(x => x.Key == clientName).Value;
                     //  TcpClient client = new TcpClient(("127.0.0.1"),int.Parse(txt_TCP_add_time.Text));
 
-                    NetworkStream stm = client.GetStream();
+                    NetworkStream stm = workerSocket.GetStream();
                     stm.Write(byData, 0, byData.Length);
                     stm.Flush();
+                    tabcontrol_terminal.SelectTab(tab_pc);
                 }
                 catch
                 {
@@ -2737,13 +2661,10 @@ namespace CULS_SERVER
                         chat.Clear();
                         chat.Add("gChat");
                         chat.Add(command);
-
                         byte[] byData = ObjectToByteArray(chat);
                         TcpClient workerSocket = null;
                         workerSocket = (TcpClient)clientList.FirstOrDefault(x => x.Key == terminal_name).Value;
-                        //  TcpClient client = new TcpClient(("127.0.0.1"),int.Parse(txt_TCP_add_time.Text));
-
-                        NetworkStream stm = client.GetStream();
+                        NetworkStream stm = workerSocket.GetStream();
                         stm.Write(byData, 0, byData.Length);
                         stm.Flush();
                         MessageBox.Show("User successfully login to " + terminal_name, _title, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -2781,7 +2702,7 @@ namespace CULS_SERVER
                         workerSocket = (TcpClient)clientList.FirstOrDefault(x => x.Key == terminal_name).Value;
                         //  TcpClient client = new TcpClient(("127.0.0.1"),int.Parse(txt_TCP_add_time.Text));
 
-                        NetworkStream stm = client.GetStream();
+                        NetworkStream stm = workerSocket.GetStream();
                         stm.Write(byData, 0, byData.Length);
                         stm.Flush();
                         MessageBox.Show("User successfully login to "+terminal_name, _title, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -2819,6 +2740,7 @@ namespace CULS_SERVER
 
         public void update_terminal_status_timein(string terminal_name,string terminal_status)
         {
+            cn.Close();
                 //---------------------update status--------------//
             try
             {
@@ -2845,7 +2767,28 @@ namespace CULS_SERVER
 
         private void button1_Click_2(object sender, EventArgs e)
         {
-            //applKeepAlive();
+            try
+            {
+                String clientName = command_lbl_terminal_name.Text;
+
+                chat.Clear();
+                chat.Add("gChat");
+                String command = "test";
+                chat.Add(command);
+
+                byte[] byData = ObjectToByteArray(chat);
+                TcpClient workerSocket = null;
+                workerSocket = (TcpClient)clientList.FirstOrDefault(x => x.Key == clientName).Value; //find the client by username in dictionary
+
+                NetworkStream stm = workerSocket.GetStream();
+                stm.Write(byData, 0, byData.Length);
+                stm.Flush();
+                chat.Clear();
+            }
+            catch
+            {
+                MessageBox.Show(txt_add_time_terminal_name.Text + " has been disconnected or suddenly shutdown", _title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         public void update_terminal_status_logout(string terminal_name, string terminal_status)
@@ -3054,12 +2997,8 @@ namespace CULS_SERVER
 
         private void database_settings_button_backup_Click(object sender, EventArgs e)
         {
-            //string _db_name = database_settings_combobox_database_selection.Text;
-            //string _path_name = database_settings_txt_backup_path.Text;
-            //MessageBox.Show(_path_name);
             try
-            {
-        
+            {      
                 cn.Open();
                 cm.Connection = cn;
                 cm = new SqlCommand("BACKUP DATABASE " + database_settings_combobox_database_selection.Text + " TO DISK='" + database_settings_txt_backup_path.Text.Trim() + "\\" + database_settings_combobox_database_selection.Text + "-" + DateTime.Now.ToString("dddd,dd MMMM yyyy HH-mm-tt") + ".bak'", cn);
@@ -3072,8 +3011,7 @@ namespace CULS_SERVER
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, _title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-    
+            }    
         }
 
         private void database_settings_button_browse_restore_Click(object sender, EventArgs e)
@@ -3094,17 +3032,12 @@ namespace CULS_SERVER
             {        
                 cn.Open();
                 cm.Connection = cn;
-
                 cm = new SqlCommand("ALTER DATABASE " + database_settings_combobox_database_selection.Text +" SET SINGLE_USER WITH ROLLBACK IMMEDIATE", cn);
-                cm.ExecuteNonQuery();
-                
+                cm.ExecuteNonQuery();              
                 cm = new SqlCommand("USE MASTER RESTORE DATABASE " + database_settings_combobox_database_selection.Text + " FROM DISK='" + database_settings_txt_restore_path.Text.Trim() + "'WITH REPLACE;", cn);
                 cm.ExecuteNonQuery();
-
                 cm = new SqlCommand("ALTER DATABASE " + database_settings_combobox_database_selection.Text + " SET MULTI_USER", cn);
                 cm.ExecuteNonQuery();
-
-
                 cn.Close();
                 database_settings_txt_restore_path.Clear();
                 MessageBox.Show("Database successfully backup", _title, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -3112,8 +3045,7 @@ namespace CULS_SERVER
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, _title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-    
+            }   
         }
 
         private void logs_daily_button_print_Click(object sender, EventArgs e)
@@ -3329,6 +3261,7 @@ namespace CULS_SERVER
         }
         public void get_user_details()
         {
+            cn.Close();
             //UPDATE TIME_REMAINING
             try
             {
@@ -3350,15 +3283,10 @@ namespace CULS_SERVER
                     txt_remaining_time_left.Text= (dr["time_remaining"].ToString());
                     string _time_rmn= (dr["time_remaining"].ToString());
                     ConvertTimeFormat(_time_rmn);
-
-                    //basta pangcall to ng picture galing sa folder
                     string paths = Application.StartupPath;
                     picbox_student.Image = Image.FromFile(paths + dr["imagepath"].ToString());
-
-
-                    //      _time_remaining_check = (dr["time_remaining"].ToString());
-                    //                    image_id = (dr["imagepath"].ToString());
                 }
+                dr.Close();
                 cm.Parameters.Clear();
                 cn.Close();
             }
@@ -3367,7 +3295,6 @@ namespace CULS_SERVER
                 cn.Close();
                 MessageBox.Show(ex.Message, _title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
            // if user is not yet register prompt error handler
             if (txt_RFID_UID.Text != "" && txt_usertype.Text == string.Empty)
             {
@@ -3381,9 +3308,11 @@ namespace CULS_SERVER
         }
         public void ConvertTimeFormat(string time_rmn)
         {
-            int time = 0;
-            int get_hour = 0, get_minute = 0, get_second = 0;
+            double time = 0;
+            int get_hour = 0, get_minute = 0;
+
             time = int.Parse(time_rmn);
+
             double cal = time / 60;
 
 
@@ -3394,28 +3323,12 @@ namespace CULS_SERVER
                 get_hour = (int)Math.Floor(cal);
                 cal = cal - (int)Math.Floor(cal);
                 get_minute = (int)Math.Ceiling(cal * 60);
-                if (get_minute > 0)
-                {
-                    get_minute -= 1;
-                    get_second = 60;
-                }
-                else if (get_second == 0 && get_minute == 0 && get_hour > 0)
-                {
-                    get_minute = 0;
-                    get_second = 0;
-                    //baka pwedeng tanggalin an ito
-                
-                }
-                else
-                {
-                    get_second = 0;
-                }
+
             }
             else
             {
                 get_hour = 0;
-                get_minute =time;
-                get_second = 60;
+                get_minute = int.Parse(time.ToString());
             }
             
             if (get_minute < 10)

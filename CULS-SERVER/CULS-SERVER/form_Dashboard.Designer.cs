@@ -111,9 +111,9 @@
             this.lbl_welcome_user = new System.Windows.Forms.Label();
             this.lbl_windows_minimize = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.lbl_pages = new System.Windows.Forms.Label();
             this.pnl_border_date_time = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabcontrol_multipage_handler = new MaterialSkin.Controls.MaterialTabControl();
             this.tab_Dashboard = new System.Windows.Forms.TabPage();
             this.bargraph_usage_annual = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -1241,7 +1241,6 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(176)))), ((int)(((byte)(154)))));
-            this.panel6.Controls.Add(this.button1);
             this.panel6.Controls.Add(this.lbl_pages);
             this.panel6.Controls.Add(this.pnl_border_date_time);
             this.transition_logo.SetDecoration(this.panel6, BunifuAnimatorNS.DecorationType.None);
@@ -1252,19 +1251,6 @@
             this.panel6.Size = new System.Drawing.Size(710, 50);
             this.panel6.TabIndex = 11;
             this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
-            // 
-            // button1
-            // 
-            this.transition_sidemenu.SetDecoration(this.button1, BunifuAnimatorNS.DecorationType.None);
-            this.transition_logo.SetDecoration(this.button1, BunifuAnimatorNS.DecorationType.None);
-            this.button1.Location = new System.Drawing.Point(524, 5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_2);
             // 
             // lbl_pages
             // 
@@ -1293,6 +1279,19 @@
             this.pnl_border_date_time.Name = "pnl_border_date_time";
             this.pnl_border_date_time.Size = new System.Drawing.Size(100, 45);
             this.pnl_border_date_time.TabIndex = 9;
+            // 
+            // button1
+            // 
+            this.transition_sidemenu.SetDecoration(this.button1, BunifuAnimatorNS.DecorationType.None);
+            this.transition_logo.SetDecoration(this.button1, BunifuAnimatorNS.DecorationType.None);
+            this.button1.Location = new System.Drawing.Point(188, 17);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_2);
             // 
             // tabcontrol_multipage_handler
             // 
@@ -1927,6 +1926,7 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.White;
+            this.panel7.Controls.Add(this.button1);
             this.panel7.Controls.Add(this.btn_terminal_control_shutdown);
             this.panel7.Controls.Add(this.btn_terminal_control_restart);
             this.panel7.Controls.Add(this.btn_terminal_control_logout);

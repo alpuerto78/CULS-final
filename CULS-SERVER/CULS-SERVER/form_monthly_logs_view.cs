@@ -25,19 +25,7 @@ namespace CULS_SERVER
             int _mm = int.Parse(handler.Monthly_report_field_month);
             try
             {
-               
-                //ParameterFields param = new ParameterFields();
-                //ParameterField param2 = new ParameterField();
-                //ParameterDiscreteValue paramdisc = new ParameterDiscreteValue();
-                //param2.Name = "area_daily";
-                //paramdisc.Value = handler.Daily_report_field_date;
-                //param2.CurrentValues.Add(paramdisc);
-                //param.Add(param2);
-                //form_daily_logs_view f2 = new form_daily_logs_view();
-                //reports_daily_logs.ParameterFieldInfo = paramdisc;
-
                 ReportDocument cryRpt = new ReportDocument();
-                //cryRpt.Load(@"C:\Users\Alpuerto\Documents\GitHub\Computer-Usage-Limiter-System\CULS-SERVER\CULS-SERVER\reports_monthly_logs.rpt");
                 cryRpt.Load(Application.StartupPath + @"\Reports\reports_monthly_logs.rpt");
                 // ----------------------------------------------------//
                 // current month
@@ -45,32 +33,26 @@ namespace CULS_SERVER
                 ParameterFieldDefinition crParameterFieldDefinition;
                 ParameterValues crParameterValues = new ParameterValues();
                 ParameterDiscreteValue crParameterDiscreteValue = new ParameterDiscreteValue();
-
                 crParameterDiscreteValue.Value = _mm;
                 crParameterFieldDefinitions = cryRpt.DataDefinition.ParameterFields;
                 crParameterFieldDefinition = crParameterFieldDefinitions["@mm"];
                 crParameterValues = crParameterFieldDefinition.CurrentValues;
-
                 crParameterValues.Clear();
                 crParameterValues.Add(crParameterDiscreteValue);
-                crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
-          
+                crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);        
                 //----------------------------------------------------//
                 //current month
                 ParameterFieldDefinitions crParameterFieldDefinitions5;
                 ParameterFieldDefinition crParameterFieldDefinition5;
                 ParameterValues crParameterValues5 = new ParameterValues();
                 ParameterDiscreteValue crParameterDiscreteValue5 = new ParameterDiscreteValue();
-
                 crParameterDiscreteValue5.Value = handler.Monthly_report_field_year;
                 crParameterFieldDefinitions5 = cryRpt.DataDefinition.ParameterFields;
                 crParameterFieldDefinition5 = crParameterFieldDefinitions5["@yyyy"];
                 crParameterValues5 = crParameterFieldDefinition5.CurrentValues;
-
                 crParameterValues5.Clear();
                 crParameterValues5.Add(crParameterDiscreteValue5);
                 crParameterFieldDefinition5.ApplyCurrentValues(crParameterValues5);
-
                 //----------------------------------------------------//
                 //current date
                 ParameterFieldDefinitions crParameterFieldDefinitions6;

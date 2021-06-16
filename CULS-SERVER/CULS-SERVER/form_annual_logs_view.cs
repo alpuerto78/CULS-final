@@ -25,18 +25,7 @@ namespace CULS_SERVER
             try
             {
                 Annual_Report_Fields handler = new Annual_Report_Fields();
-                //ParameterFields param = new ParameterFields();
-                //ParameterField param2 = new ParameterField();
-                //ParameterDiscreteValue paramdisc = new ParameterDiscreteValue();
-                //param2.Name = "area_daily";
-                //paramdisc.Value = handler.Daily_report_field_date;
-                //param2.CurrentValues.Add(paramdisc);
-                //param.Add(param2);
-                //form_daily_logs_view f2 = new form_daily_logs_view();
-                //reports_daily_logs.ParameterFieldInfo = paramdisc;
-
                 ReportDocument cryRpt = new ReportDocument();
-                //cryRpt.Load(@"C:\Users\Alpuerto\Documents\GitHub\Computer-Usage-Limiter-System\CULS-SERVER\CULS-SERVER\reports_annual_logs.rpt");
                 cryRpt.Load(Application.StartupPath + @"\Reports\reports_annual_logs.rpt");
                 //----------------------------------------------------//
                 //current date
@@ -44,12 +33,10 @@ namespace CULS_SERVER
                 ParameterFieldDefinition crParameterFieldDefinition;
                 ParameterValues crParameterValues = new ParameterValues();
                 ParameterDiscreteValue crParameterDiscreteValue = new ParameterDiscreteValue();
-
                 crParameterDiscreteValue.Value = handler.Annual_report_field_year;
                 crParameterFieldDefinitions = cryRpt.DataDefinition.ParameterFields;
                 crParameterFieldDefinition = crParameterFieldDefinitions["@yyyy"];
                 crParameterValues = crParameterFieldDefinition.CurrentValues;
-
                 crParameterValues.Clear();
                 crParameterValues.Add(crParameterDiscreteValue);
                 crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
@@ -59,12 +46,10 @@ namespace CULS_SERVER
                 ParameterFieldDefinition crParameterFieldDefinition2;
                 ParameterValues crParameterValues2 = new ParameterValues();
                 ParameterDiscreteValue crParameterDiscreteValue2 = new ParameterDiscreteValue();
-
                 crParameterDiscreteValue2.Value = handler.Annual_report_field_area.ToUpper();
                 crParameterFieldDefinitions2 = cryRpt.DataDefinition.ParameterFields;
                 crParameterFieldDefinition2 = crParameterFieldDefinitions2["area_annual"];
                 crParameterValues2 = crParameterFieldDefinition2.CurrentValues;
-
                 crParameterValues2.Clear();
                 crParameterValues2.Add(crParameterDiscreteValue2);
                 crParameterFieldDefinition2.ApplyCurrentValues(crParameterValues2);

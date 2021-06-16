@@ -118,7 +118,6 @@ namespace CULS_SERVER
             //UPDATE records
             if (button_save.Text == "UPDATE")
             {
-                
                 try
                 {
                     if ((textbox_department.Text == String.Empty) || (textbox_dept_description.Text == String.Empty))
@@ -127,7 +126,6 @@ namespace CULS_SERVER
                         MessageBox.Show("Required Missing Field", _title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
-
                     cn.Open();
                     cm.Connection = cn;
                     cm.CommandType = CommandType.StoredProcedure;
@@ -135,7 +133,6 @@ namespace CULS_SERVER
                     cm.Parameters.AddWithValue("@dept_name", textbox_department.Text);
                     cm.Parameters.AddWithValue("@dept_description", textbox_dept_description.Text);
                     cm.Parameters.AddWithValue("@dept_id",lbl_dept_value.Text);
-
                     cm.ExecuteNonQuery();
                     cn.Close();
                     this.Close();
@@ -146,7 +143,6 @@ namespace CULS_SERVER
                 }
                 catch (Exception ex)
                 {
-                    cn.Close();
                     MessageBox.Show(ex.Message, _title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }

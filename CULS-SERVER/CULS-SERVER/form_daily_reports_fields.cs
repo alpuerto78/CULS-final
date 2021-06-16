@@ -46,7 +46,6 @@ namespace CULS_SERVER
 
             }
         }
-
         private void form_daily_reports_fields_Load(object sender, EventArgs e)
         {
             //get the date range of the report of daily 

@@ -194,7 +194,7 @@ namespace CULS_SERVER
         }
         private void button_save_Click(object sender, EventArgs e)
         {
-            if (cbo_usertype.Text == "student")
+             if(cbo_usertype.Text == "student")
             {
                 if (txt_stud_id_no.Text == String.Empty || cbo_dept.Text == String.Empty || cbo_course.Text == String.Empty)
                 {
@@ -241,12 +241,15 @@ namespace CULS_SERVER
                             txt_RFID_UID.Clear();
                         }
                         cn.Close();
+                        dr.Close();
                     }
                     else
                     {
                         Reader_Status();
                         _flag = true;
+                        cn.Close();
                     }
+                  
                     cn.Close();
                 }
                 catch (Exception ex)
@@ -297,28 +300,6 @@ namespace CULS_SERVER
         }
         private void timer_reader_card_Tick(object sender, EventArgs e)
         {
-
-
-            //------------------------------------------------------------------//
-            //read
-            //if (lbl_reader_status.Text == "Connected")
-            //{
-            //    try
-            //    {
-
-            //        NFC.Connect();
-            //        NFC.GetCardUID();
-            //        string a = NFC.GetCardUID();
-            //        txt_RFID_UID.Text = a;
-            //    }
-            //    catch
-            //    {
-            //        MessageBox.Show("Reader has been removed!", _title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    }
-            //}
-
-            //-----------------------------------------------------------------//
-            //read-write
             if (lbl_reader_status.Text == "Connected")
             {
                 try
@@ -421,7 +402,9 @@ namespace CULS_SERVER
                     }
 
                 }
+                dr.Close();
                 cn.Close();
+
             }
             catch (Exception ex)
             {
@@ -464,11 +447,9 @@ namespace CULS_SERVER
                     cm.Parameters.AddWithValue("@time_remaining", user_handler.Time_limit_handler);
                     string paths = Application.StartupPath;
                     System.IO.File.Copy(opf.FileName, paths + "\\Images\\" + CorrectFileName);
-                    string i = paths + "\\Images\\" + CorrectFileName;
-                    
+                    string i = paths + "\\Images\\" + CorrectFileName;                   
                     cm.ExecuteNonQuery();
-                    cn.Close();
-             
+                    cn.Close();            
                     timer_reader_card.Stop();
                     timer_reader_status.Stop();
                     MessageBox.Show("Successfully Added New User!", _title, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -478,20 +459,15 @@ namespace CULS_SERVER
                 }
                 catch (Exception ex)
                 {
-                    cn.Close();
                     MessageBox.Show(ex.Message, _title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
         public void update_record()
         {
-            //connection state close upon loop in methods
-            cn.Close();
             //unique name
             string unique_name = DateTime.Now.ToString("yyyy_MM_dd_mm_ss");
             string CorrectFileName = unique_name + System.IO.Path.GetFileName(opf.FileName);
-            //C:\Users\Alpuerto\Documents\GitHub\Computer-Usage-Limiter-System\CULS-SERVER\CULS-SERVER\bin\Debug
-
             string image_path = "\\Images\\" + CorrectFileName;
             if (image_path == "\\Images\\" + unique_name)
             {
@@ -499,7 +475,6 @@ namespace CULS_SERVER
                 //see the handler class                           
                 try
                 {
-
                     cn.Open();
                     cm.Connection = cn;
                     cm.CommandType = CommandType.StoredProcedure;
@@ -515,7 +490,7 @@ namespace CULS_SERVER
                     cm.Parameters.AddWithValue("@imagepath", user_handler.Image_handler);
                     cm.ExecuteNonQuery();
                     cn.Close();
-                    MessageBox.Show("Successfully Update New User!", _title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Successfully Update User !", _title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Clear_All();
                     _dashboard.load_student_records();
                     this.Close();
@@ -690,7 +665,7 @@ namespace CULS_SERVER
             if (retCode != Card.SCARD_S_SUCCESS)
             {
                 //  MessageBox.Show("Check your device and please restart again", "Reader not connected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                MessageBox.Show("basta may error");
+             //   MessageBox.Show("basta may error");
 
                 connActive = false;
                 return;

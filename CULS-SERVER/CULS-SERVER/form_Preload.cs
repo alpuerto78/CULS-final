@@ -34,24 +34,14 @@ namespace CULS_SERVER
         int dir = 1;
         private void stretch_Tick(object sender, EventArgs e)
         {
-
             if (progbar_pre_load.Value == 90)
-            {
-                
+            {             
                 dir--;
-                //  progbar_pre_load.animationIterval = 4;
-            //    SwitchColor();
-
             }
             else if (progbar_pre_load.Value==10) 
-            {
-               
+            {             
                 dir ++;
-                // progbar_pre_load.animationIterval = 2;
-              //  SwitchColor();
-
             }
-
             progbar_pre_load.Value += dir;
         }
         System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
@@ -60,12 +50,14 @@ namespace CULS_SERVER
             timer.Interval = 3500;
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
-
         }
         void timer_Tick(object sender, EventArgs e)
         {
             this.Close();
         }
+        private void label1_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

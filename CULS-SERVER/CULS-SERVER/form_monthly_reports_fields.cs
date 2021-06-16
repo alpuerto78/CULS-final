@@ -25,14 +25,13 @@ namespace CULS_SERVER
 
         private void form_monthly_reports_fields_Load(object sender, EventArgs e)
         {
-            //get the date range of the report by moths 
+            //get the date range of the report by months 
             Monthly_Report_Fields handler = new Monthly_Report_Fields();
             report_monthly_txt_month_field.Text = handler.Monthly_report_field_month;
             report_monthly_txt_year_field.Text = handler.Monthly_report_field_year;
             report_monthly_txt_area_field.Focus();
 
-        }
-      
+        }    
         private void button_monthly_report_field_view_Click(object sender, EventArgs e)
         {
             int _mm_value = 0;
@@ -43,8 +42,7 @@ namespace CULS_SERVER
             }
             else
             {
-                Monthly_Report_Fields handler = new Monthly_Report_Fields();
-             
+                Monthly_Report_Fields handler = new Monthly_Report_Fields();            
                 handler.Monthly_report_field_year = report_monthly_txt_year_field.Text;
                 handler.Monthly_report_field_area = report_monthly_txt_area_field.Text;
                 handler.Monthly_report_field_prepared = report_monthly_txt_prepared_field.Text;

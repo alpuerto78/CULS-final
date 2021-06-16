@@ -53,7 +53,6 @@ namespace CULS_SERVER
             txt_RFID_UID.Text = _UID;
             try
             {
-
                 cn.Open();
                 cm.Connection = cn;
                 cm.CommandType = CommandType.StoredProcedure;
@@ -62,31 +61,22 @@ namespace CULS_SERVER
                 cm.ExecuteNonQuery();
                 dr = cm.ExecuteReader();
                 while (dr.Read())
-                {
-
-                    
+                {                  
                     txt_stud_id_no.Text = (dr["stud_id_no"].ToString());
-                   txt_firstname.Text = (dr["firstname"].ToString());
+                    txt_firstname.Text = (dr["firstname"].ToString());
                     txt_lastname.Text = (dr["lastname"].ToString());
-
                     txt_dept.Text = (dr["dept_name"].ToString());
                     txt_course.Text = (dr["course_name"].ToString());
                     ConvertTimeFormat(dr["time_remaining"].ToString());
-                   txt_usertype.Text= (dr["usertype_name"].ToString());
-                    //basta pangcall to ng picture galing sa folder
+                    txt_usertype.Text= (dr["usertype_name"].ToString());
                     string paths = Application.StartupPath;
                     picbox_student.Image = Image.FromFile(paths + dr["imagepath"].ToString());
-
-
-                    //      _time_remaining_check = (dr["time_remaining"].ToString());
-                    //                    image_id = (dr["imagepath"].ToString());
                 }
                 cm.Parameters.Clear();
                 cn.Close();
             }
             catch (Exception ex)
             {
-                cn.Close();
                 MessageBox.Show(ex.Message, _title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
@@ -169,6 +159,7 @@ namespace CULS_SERVER
                 {
                     get_second = 0;
                 }
+                txt_remaining_time.Text = "0" + get_hour.ToString() + ":0" + get_minute.ToString();
             }
             else
             {

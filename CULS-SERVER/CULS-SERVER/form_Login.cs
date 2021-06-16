@@ -20,6 +20,7 @@ namespace CULS_SERVER
         SqlCommand cm = new SqlCommand();
         DB_conn dbcon = new DB_conn();
         string _title = "COMPUTER USAGE LIMITER SYSTEM";
+        int _shutdown_counter = 3;
         public form_Login()
         {
             InitializeComponent();
@@ -116,8 +117,7 @@ namespace CULS_SERVER
                         if (txt_username.Text.Equals(dr["username"].ToString()) && txt_password.Text.Equals(dr["password"].ToString()))
                         {
 
-                            MessageBox.Show("Log in Successfully!", _title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            
+                            MessageBox.Show("Log in Successfully!", _title, MessageBoxButtons.OK, MessageBoxIcon.Information);                          
                             label_alert.Text = "*Fill out Credentials";
                             label_alert.ForeColor = Color.DarkGray;
                             ClearAll();
@@ -126,20 +126,30 @@ namespace CULS_SERVER
                             f1.ShowDialog();
                         }
                         else
-                        {
-                            MessageBox.Show("Credentials is Incorrect", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            label_alert.Text = "*Credentials is Incorrect";
-                            label_alert.ForeColor = Color.Red;
-                            ClearAll();
+                        {                         
+                            _shutdown_counter--;
+                            if (_shutdown_counter > 0)
+                            {
+
+                                MessageBox.Show("Credentials is Incorrect! You only have " + _shutdown_counter + " trial(s) before the system shutdown", _title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                label_alert.Text = "*Credentials is Incorrect";
+                                label_alert.ForeColor = Color.Red;
+                                ClearAll();
+                            }
+                            else if (_shutdown_counter == 0)
+                            {
+                                CmdClass cmd = new CmdClass();
+                                MessageBox.Show("System will shutdown ", _title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                               cmd.ExecuteCommand("shutdown -s");
+                            }
                         }
                     }
                     cn.Close();
                 }
             }
             catch (Exception ex)
-            {
-                cn.Close();
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            { 
+                MessageBox.Show(ex.Message, _title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
   
         }

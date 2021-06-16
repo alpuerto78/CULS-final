@@ -53,7 +53,6 @@ namespace CULS_SERVER
                         MessageBox.Show("Required Missing Field", _title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
-
                     cn.Open();
                     cm.Connection = cn;
                     cm.CommandType = CommandType.StoredProcedure;
@@ -61,31 +60,24 @@ namespace CULS_SERVER
                     cm.Parameters.AddWithValue("@course_name", txt_course_name.Text);
                     cm.Parameters.AddWithValue("@course_description", txt_course_descript.Text);
                     cm.Parameters.AddWithValue("@dept_id", department_id);
-                    cm.ExecuteNonQuery();
-               
-                    cn.Close();
-                    // Show all records
-                    //  _dashboard.load_course_records();
+                    cm.ExecuteNonQuery();              
+                    cn.Close();               
                     MessageBox.Show("Successfully Added New Course!", _title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                     txt_course_name.Clear();
                     txt_course_descript.Clear();
                     //clear the current selection, but leave all of the items in the list
                     combobox_display_dept.SelectedIndex = -1;
                     combobox_display_dept.Focus();
-                    _dashboard.load_course_records();
-                    
+                    _dashboard.load_course_records();                   
                 }
                 catch (Exception ex)
                 {
-                    cn.Close();
                     MessageBox.Show(ex.Message, _title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             //Update records 
             if (button_course_save.Text == "UPDATE")
-                {
-                    
+                {                   
                 try
                     {
                         if ((txt_course_name.Text == String.Empty) || (txt_course_descript.Text == String.Empty || combobox_display_dept.Text == String.Empty))
@@ -94,34 +86,27 @@ namespace CULS_SERVER
                             MessageBox.Show("Required Missing Field", _title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return;
                         }
-
                         cn.Open();
-                     // MessageBox.Show(department_id);
                         cm.Connection = cn;
                         cm.CommandType = CommandType.StoredProcedure;
                         cm.CommandText = "SP_COURSE_UPDATE";
                         cm.Parameters.AddWithValue("@course_name", txt_course_name.Text);
                         cm.Parameters.AddWithValue("@course_description", txt_course_descript.Text);
                         cm.Parameters.AddWithValue("@course_id", lbl_course_value.Text);
-                    cm.Parameters.AddWithValue("@dept_id", lbl_dept_value.Text);
-                    cm.ExecuteNonQuery();
+                        cm.Parameters.AddWithValue("@dept_id", lbl_dept_value.Text);
+                        cm.ExecuteNonQuery();
                         cn.Close();
-                    //display updated datagrid
-                    _dashboard.load_course_records();
-                    this.Close();
-
+                        //display updated datagrid
+                        _dashboard.load_course_records();
+                        this.Close();
                         MessageBox.Show("Successfully Updated New Department!", _title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                     
                         Clearall();
                    
                     }
                     catch (Exception ex)
                     {
-                        cn.Close();
                         MessageBox.Show(ex.Message, _title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-
-                    
+                    }                
                 }
             
         }

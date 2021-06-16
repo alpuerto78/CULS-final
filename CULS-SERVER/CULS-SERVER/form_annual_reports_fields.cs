@@ -31,7 +31,6 @@ namespace CULS_SERVER
 
         private void button_annual_report_field_view_Click(object sender, EventArgs e)
         {
-
             if ((report_annual_txt_area_field.Text == String.Empty) || (report_annual_txt_year_field.Text == String.Empty) || (report_annual_txt_prepared_field.Text == String.Empty) || (report_annual_txt_noted_field.Text == String.Empty))
             {
                 MessageBox.Show("Required Missing Field", _title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -44,7 +43,6 @@ namespace CULS_SERVER
                 handler.Annual_report_field_area = report_annual_txt_area_field.Text;
                 handler.Annual_report_field_prepared = report_annual_txt_prepared_field.Text;
                 handler.Annual_report_field_noted = report_annual_txt_noted_field.Text;
-                MessageBox.Show(handler.Annual_report_field_noted);
                 form_annual_logs_view f1 = new form_annual_logs_view();
                 f1.ShowDialog();
 

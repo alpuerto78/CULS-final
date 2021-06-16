@@ -26,37 +26,18 @@ namespace CULS_SERVER
             try
             {
                 Daily_Report_Fields handler = new Daily_Report_Fields();
-                //ParameterFields param = new ParameterFields();
-                //ParameterField param2 = new ParameterField();
-                //ParameterDiscreteValue paramdisc = new ParameterDiscreteValue();
-                //param2.Name = "area_daily";
-                //paramdisc.Value = handler.Daily_report_field_date;
-                //param2.CurrentValues.Add(paramdisc);
-                //param.Add(param2);
-                //form_daily_logs_view f2 = new form_daily_logs_view();
-                //reports_daily_logs.ParameterFieldInfo = paramdisc;
-
-                ReportDocument cryRpt = new ReportDocument();
-              
-                
+                ReportDocument cryRpt = new ReportDocument();                           
                 cryRpt.Load(Application.StartupPath+@"\Reports\reports_daily_logs.rpt");
-
-               // cryRpt.Load(@"C:\Users\Alpuerto\Documents\GitHub\Computer-Usage-Limiter-System\CULS-SERVER\CULS-SERVER\Reports\reports_daily_logs.rpt");
-                //   report.Load(Application.StartupPath + "reports_daily_logs.rpt");//C#
-
-
                 //----------------------------------------------------//
                 //current date
                 ParameterFieldDefinitions crParameterFieldDefinitions;
                 ParameterFieldDefinition crParameterFieldDefinition;
                 ParameterValues crParameterValues = new ParameterValues();
                 ParameterDiscreteValue crParameterDiscreteValue = new ParameterDiscreteValue();
-
                 crParameterDiscreteValue.Value = handler.Daily_report_field_date;
                 crParameterFieldDefinitions = cryRpt.DataDefinition.ParameterFields;
                 crParameterFieldDefinition = crParameterFieldDefinitions["@current_Date"];
                 crParameterValues = crParameterFieldDefinition.CurrentValues;
-
                 crParameterValues.Clear();
                 crParameterValues.Add(crParameterDiscreteValue);
                 crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
@@ -66,12 +47,10 @@ namespace CULS_SERVER
                 ParameterFieldDefinition crParameterFieldDefinition2;
                 ParameterValues crParameterValues2 = new ParameterValues();
                 ParameterDiscreteValue crParameterDiscreteValue2 = new ParameterDiscreteValue();
-
                 crParameterDiscreteValue2.Value = handler.Daily_report_field_area.ToUpper();
                 crParameterFieldDefinitions2 = cryRpt.DataDefinition.ParameterFields;
                 crParameterFieldDefinition2 = crParameterFieldDefinitions2["area_daily"];
                 crParameterValues2 = crParameterFieldDefinition2.CurrentValues;
-
                 crParameterValues2.Clear();
                 crParameterValues2.Add(crParameterDiscreteValue2);
                 crParameterFieldDefinition2.ApplyCurrentValues(crParameterValues2);
