@@ -28,6 +28,7 @@ namespace CULS_Client
             timer_shuffle_image.Start();
             label_pc_no.Text = System.Environment.MachineName;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormIsClosing);
+            
         }
 
         private void picturebox_slideshow_Click(object sender, EventArgs e)
@@ -70,14 +71,15 @@ namespace CULS_Client
             }
             catch (Exception ex)
             {
-                //   MessageBox.Show(ex.Message, _title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                   MessageBox.Show(ex.Message, _title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             if (_terminal_status == "LIMITED" || _terminal_status == "UNLIMITED")
             {
                 timer_get_time.Stop();
                 timer_shuffle_image.Stop();
                 //   MessageBox.Show(_terminal_status);
-                form_Timer f1 = new form_Timer();
+                form_Timer f1 = new form_Timer();      
+          
                 this.Hide();
                 f1.Show();
             }
@@ -86,6 +88,12 @@ namespace CULS_Client
         private void timer_shuffle_image_Tick(object sender, EventArgs e)
         {
             LoadNext();
+        }
+
+        private void form_PostLockscreen_Load(object sender, EventArgs e)
+        {
+            form_Timer f1 = new form_Timer();
+            f1.Hide();
         }
     }
 }

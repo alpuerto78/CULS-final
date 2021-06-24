@@ -94,6 +94,7 @@ namespace CULS_Client
             this.Name = "form_PostLockscreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CULS CLIENT";
+            this.Load += new System.EventHandler(this.form_PostLockscreen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picturebox_slideshow)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

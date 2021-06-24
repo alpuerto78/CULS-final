@@ -2667,7 +2667,7 @@ namespace CULS_SERVER
                         NetworkStream stm = workerSocket.GetStream();
                         stm.Write(byData, 0, byData.Length);
                         stm.Flush();
-                        MessageBox.Show("User successfully login to " + terminal_name, _title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //    MessageBox.Show("User successfully login to " + terminal_name, _title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         //update the status of the client
                         string terminal_status = "LIMITED";
                         update_terminal_status_timein(terminal_name,terminal_status);
@@ -2705,7 +2705,7 @@ namespace CULS_SERVER
                         NetworkStream stm = workerSocket.GetStream();
                         stm.Write(byData, 0, byData.Length);
                         stm.Flush();
-                        MessageBox.Show("User successfully login to "+terminal_name, _title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                     //   MessageBox.Show("User successfully login to "+terminal_name, _title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         //method para maupdate kung naging unlimited na
                         string terminal_status = "UNLIMITED";
                         update_terminal_status_timein(terminal_name, terminal_status);

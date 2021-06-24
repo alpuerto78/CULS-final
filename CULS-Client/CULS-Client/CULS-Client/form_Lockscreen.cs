@@ -375,9 +375,9 @@ namespace CULS_Client
                 timer_get_time.Stop();
                 timer_shuffle.Stop();
                 //   MessageBox.Show(_terminal_status);
-                form_Timer f1 = new form_Timer();
+                form_Timer f1 = new form_Timer();              
+                f1.Show();
                 this.Hide();
-                f1.Show();            
             }
         }
         private void button1_Click(object sender, EventArgs e)

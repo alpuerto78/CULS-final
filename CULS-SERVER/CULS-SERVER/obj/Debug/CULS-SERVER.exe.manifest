@@ -655,14 +655,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CULS-SERVER.exe" size="8954808">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CULS-SERVER.exe" size="8954296">
       <assemblyIdentity name="CULS-SERVER" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>x2OyuA0GqVwdrDSDfr3bpG4/1HqA/w0chZAqzpbR5vk=</dsig:DigestValue>
+        <dsig:DigestValue>7iMdApj0Qc94IOc0BfleZJmSxNadNTJML/tCYRIu0fU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -674,7 +674,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>KamL392HmMHvpN/ZX+SPbfnIsI3acxwC2QkXIYLCDRs=</dsig:DigestValue>
+        <dsig:DigestValue>2AfsHXdvUthyA1IhKRsOJ5JYUXdQy2gKGbkQlrQz8fg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

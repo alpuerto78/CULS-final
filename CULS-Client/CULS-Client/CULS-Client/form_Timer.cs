@@ -17,10 +17,6 @@ namespace CULS_Client
     public partial class form_Timer : Form
     {
         double time;
-        SqlConnection cn = new SqlConnection();
-        SqlCommand cm = new SqlCommand();
-        DB_conn dbcon = new DB_conn();
-        SqlDataReader dr;
         bool flag_timeout = true;
         int second, minute, hour;
         string _title = "COMPUTER USAGE LIMITER SYSTEM";
@@ -34,12 +30,10 @@ namespace CULS_Client
         {
             InitializeComponent();
 
-            cn = new SqlConnection(dbcon.GetConnection());
           
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormIsClosing);
             timer_server_logout.Start();
             //IniLogout();
-
         }
         private void FormIsClosing(object sender, FormClosingEventArgs e)
         {
@@ -122,6 +116,8 @@ namespace CULS_Client
                 NetworkClient.SendCommandToServer("COMMAND|LOGOUT|" + _terminal + "|" + _terminal_status + "|" + _UID + "|" + _remaining_time + "|");
                 Timer_Client.UpdateTerminalStatus("IDLE", "0", "EMPTY");
                 form_PostLockscreen f1 = new form_PostLockscreen();
+                     client_timer.Stop();
+                flag_timeout = true;
                 this.Hide();
                 f1.Show();
             }
@@ -260,11 +256,7 @@ namespace CULS_Client
                     NetworkClient.SendCommandToServer("COMMAND|LOGOUT|" + _terminal + "|"+_terminal_status+"|" + _UID + "|" + _remaining_time + "|");
                       
                     Timer_Client.UpdateTerminalStatus("IDLE", "0", "EMPTY");
-                    form_PostLockscreen f1 = new form_PostLockscreen();
-                    client_timer.Stop();
-                    flag_timeout = true;
-                    this.Hide();
-                    f1.Show();                                 
+                                          
                 }
                 else
                 {
@@ -278,14 +270,14 @@ namespace CULS_Client
                     //receiveTextSplit[5]=remaining time
 
                     NetworkClient.SendCommandToServer("COMMAND|LOGOUT|" + _terminal + "|" + _terminal_status + "|" + _UID + "|" + _remaining_time + "|");
-                 
+
                     Timer_Client.UpdateTerminalStatus("IDLE", "0", "EMPTY");
-                    form_PostLockscreen f1 = new form_PostLockscreen();
-                    flag_timeout = true;
-                    client_timer.Stop();
-                    this.Hide();
-                    f1.Show();
                 }
+                form_PostLockscreen f1 = new form_PostLockscreen();
+                client_timer.Stop();
+                flag_timeout = true;
+                this.Hide();
+                f1.Show();
             }
         }
         public void IniLogout()
@@ -314,11 +306,6 @@ namespace CULS_Client
 
                 NetworkClient.SendCommandToServer("COMMAND|LOGOUT|" + _terminal + "|" + _terminal_status + "|" + _UID + "|" + _remaining_time + "|");
                 Timer_Client.UpdateTerminalStatus("IDLE", "0", "EMPTY");
-                form_PostLockscreen f1 = new form_PostLockscreen();
-                flag_timeout = true;
-                client_timer.Stop();
-                this.Hide();
-                f1.Show();
 
             }
             else
@@ -334,13 +321,13 @@ namespace CULS_Client
 
                 NetworkClient.SendCommandToServer("COMMAND|LOGOUT|" + _terminal + "|" + _terminal_status + "|" + _UID + "|" + _remaining_time + "|");
                 Timer_Client.UpdateTerminalStatus("IDLE", "0", "EMPTY");
-                form_PostLockscreen f1 = new form_PostLockscreen();
-                flag_timeout = true;
-                client_timer.Stop();
-                this.Hide();
-                f1.Show();
+        
             }
-       
+            form_PostLockscreen f1 = new form_PostLockscreen();
+            flag_timeout = true;
+            client_timer.Stop();
+            this.Hide();
+            f1.Show();
         }
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
@@ -356,15 +343,27 @@ namespace CULS_Client
         private void timer_server_logout_Tick(object sender, EventArgs e)
         {          
             Logout fc = new Logout();
-            string _com_logout ="COMMAND|LOGOUT";           
- 
+            string _com_logout ="COMMAND|LOGOUT";
+            try
+            {
                 if (_com_logout == fc.Logout_command)
                 {
                     timer_server_logout.Stop();
                     ServerLogout();
-                   // _flag_logout = false;
+                    fc.Logout_command = "NULL";
+                    form_PostLockscreen f1 = new form_PostLockscreen();
+                    flag_timeout = true;
+                    client_timer.Stop();
+                    f1.Show();
+                    this.Hide();
+           
+
                 }
-            fc.Logout_command = "NULL";
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, _title);
+            }
         }
 
         private void bunifuFlatButton1_Click_1(object sender, EventArgs e)

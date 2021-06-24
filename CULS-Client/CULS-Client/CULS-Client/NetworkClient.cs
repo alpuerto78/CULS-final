@@ -176,7 +176,7 @@ namespace CULS_Client
                         case "gChat":
                             readData = "" + parts[1];
                             NetworkCommand.CommandText(parts[1]);
-                           // MessageBox.Show(parts[1]);
+                 //           MessageBox.Show(parts[1]);
                             break;
                     }
 
@@ -267,7 +267,7 @@ namespace CULS_Client
                 {
                     chat.Add("gChat");
                     chat.Add(message);
-                  //  MessageBox.Show(message);
+                  // MessageBox.Show(message);
                     byte[] outStream = ObjectToByteArray(chat);
 
                     serverStream.Write(outStream, 0, outStream.Length);
