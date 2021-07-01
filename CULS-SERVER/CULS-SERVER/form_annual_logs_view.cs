@@ -26,7 +26,7 @@ namespace CULS_SERVER
             {
                 Annual_Report_Fields handler = new Annual_Report_Fields();
                 ReportDocument cryRpt = new ReportDocument();
-                cryRpt.Load(Application.StartupPath + @"\Reports\reports_annual_logs.rpt");
+                cryRpt.Load(Application.StartupPath + @"\Reports\reports_annual_logs_ver.rpt");
                 //----------------------------------------------------//
                 //current date
                 ParameterFieldDefinitions crParameterFieldDefinitions;

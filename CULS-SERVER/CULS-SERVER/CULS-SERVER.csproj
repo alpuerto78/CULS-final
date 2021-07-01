@@ -292,6 +292,12 @@
       <DependentUpon>reports_annual_logs.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="reports_annual_logs_ver.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>reports_annual_logs_ver.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="reports_daily_logs.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -363,6 +369,10 @@
     <EmbeddedResource Include="reports_annual_logs.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>reports_annual_logs.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reports_annual_logs_ver.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>reports_annual_logs_ver.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="reports_daily_logs.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
