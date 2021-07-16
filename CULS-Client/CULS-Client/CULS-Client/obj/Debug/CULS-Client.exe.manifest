@@ -55,14 +55,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CULS-Client.exe" size="11363768">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CULS-Client.exe" size="9161656">
       <assemblyIdentity name="CULS-Client" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>PwU6FpwGN0mlORDcWnLUeKGWR5vZYrlz0PbnYSW6FXg=</dsig:DigestValue>
+        <dsig:DigestValue>QpZGNCn1beDdShCoFgmOi/Z38Cai+xRoMZ9F56Du9w0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

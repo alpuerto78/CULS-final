@@ -45,7 +45,6 @@ namespace CULS_SERVER
                 handler.Annual_report_field_noted = report_annual_txt_noted_field.Text;
                 form_annual_logs_view f1 = new form_annual_logs_view();
                 f1.ShowDialog();
-
             }
         }
     }

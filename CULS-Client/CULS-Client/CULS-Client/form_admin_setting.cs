@@ -31,7 +31,6 @@ namespace CULS_Client
         
         cm.ExecuteCommand("shutdown -f -t -t3 -s");
            
-
         }
         private void btn_exit_client_Click(object sender, EventArgs e)
         {
@@ -92,6 +91,8 @@ namespace CULS_Client
         private void button_ipAD_save_Click(object sender, EventArgs e)
         {
             form_Lockscreen f1 = new form_Lockscreen();
+            f1.timer_get_time.Start();
+            f1.timer_shuffle.Start();
             f1.Show();
             this.Hide();
         }

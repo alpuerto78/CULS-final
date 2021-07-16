@@ -31,9 +31,9 @@ namespace CULS_SERVER
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_monthly_logs_view));
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.reports_monthly_logs3 = new CULS_SERVER.reports_monthly_logs();
             this.reports_monthly_logs2 = new CULS_SERVER.reports_monthly_logs();
             this.reports_monthly_logs1 = new CULS_SERVER.reports_monthly_logs();
-            this.reports_monthly_logs3 = new CULS_SERVER.reports_monthly_logs();
             this.SuspendLayout();
             // 
             // crystalReportViewer1

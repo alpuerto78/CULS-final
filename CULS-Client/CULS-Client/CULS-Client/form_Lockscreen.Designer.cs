@@ -58,6 +58,23 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.picturebox_slideshow = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.button_logout = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.lbl_second = new System.Windows.Forms.Label();
+            this.lbl_minute = new System.Windows.Forms.Label();
+            this.lbl_hour = new System.Windows.Forms.Label();
+            this.lbl_end_time = new System.Windows.Forms.Label();
+            this.lbl_start_time = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lbl_minimize = new System.Windows.Forms.Label();
+            this.client_timer = new System.Windows.Forms.Timer(this.components);
+            this.timer_server_logout = new System.Windows.Forms.Timer(this.components);
+            this.panel_timer = new System.Windows.Forms.Panel();
+            this.lbl_time_catcher = new System.Windows.Forms.Label();
             this.panel_configure.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.button_hide_pass)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.button_show_pass)).BeginInit();
@@ -65,6 +82,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picturebox_slideshow)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.panel_timer.SuspendLayout();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -84,7 +105,7 @@
             this.label_pc_no.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
             this.label_pc_no.Font = new System.Drawing.Font("Calibri", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_pc_no.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(228)))), ((int)(((byte)(228)))));
-            this.label_pc_no.Location = new System.Drawing.Point(27, 25);
+            this.label_pc_no.Location = new System.Drawing.Point(405, 12);
             this.label_pc_no.Name = "label_pc_no";
             this.label_pc_no.Size = new System.Drawing.Size(279, 117);
             this.label_pc_no.TabIndex = 3;
@@ -102,6 +123,7 @@
             // 
             // panel_configure
             // 
+            this.panel_configure.BackColor = System.Drawing.SystemColors.Control;
             this.panel_configure.Controls.Add(this.label1);
             this.panel_configure.Controls.Add(this.btn_signin);
             this.panel_configure.Controls.Add(this.txt_username);
@@ -114,7 +136,7 @@
             this.panel_configure.Controls.Add(this.label_close);
             this.panel_configure.Controls.Add(this.panel1);
             this.panel_configure.Controls.Add(this.label4);
-            this.panel_configure.Location = new System.Drawing.Point(25, 160);
+            this.panel_configure.Location = new System.Drawing.Point(376, 132);
             this.panel_configure.Name = "panel_configure";
             this.panel_configure.Size = new System.Drawing.Size(297, 200);
             this.panel_configure.TabIndex = 4;
@@ -408,18 +430,234 @@
             this.picturebox_slideshow.InitialImage = null;
             this.picturebox_slideshow.Location = new System.Drawing.Point(0, 0);
             this.picturebox_slideshow.Name = "picturebox_slideshow";
-            this.picturebox_slideshow.Size = new System.Drawing.Size(800, 450);
+            this.picturebox_slideshow.Size = new System.Drawing.Size(858, 463);
             this.picturebox_slideshow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picturebox_slideshow.TabIndex = 2;
             this.picturebox_slideshow.TabStop = false;
             this.picturebox_slideshow.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(77, 68);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(75, 30);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 12;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(77, 8);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(70, 67);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 11;
+            this.pictureBox1.TabStop = false;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.button_logout);
+            this.panel2.Controls.Add(this.lbl_second);
+            this.panel2.Controls.Add(this.lbl_minute);
+            this.panel2.Controls.Add(this.lbl_hour);
+            this.panel2.Controls.Add(this.lbl_end_time);
+            this.panel2.Controls.Add(this.lbl_start_time);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Location = new System.Drawing.Point(11, 89);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(200, 208);
+            this.panel2.TabIndex = 13;
+            // 
+            // button_logout
+            // 
+            this.button_logout.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(85)))), ((int)(((byte)(143)))));
+            this.button_logout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(85)))), ((int)(((byte)(143)))));
+            this.button_logout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button_logout.BorderRadius = 5;
+            this.button_logout.ButtonText = "End Session";
+            this.button_logout.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_logout.DisabledColor = System.Drawing.Color.Gray;
+            this.button_logout.Iconcolor = System.Drawing.Color.Transparent;
+            this.button_logout.Iconimage = null;
+            this.button_logout.Iconimage_right = null;
+            this.button_logout.Iconimage_right_Selected = null;
+            this.button_logout.Iconimage_Selected = null;
+            this.button_logout.IconMarginLeft = 0;
+            this.button_logout.IconMarginRight = 0;
+            this.button_logout.IconRightVisible = true;
+            this.button_logout.IconRightZoom = 0D;
+            this.button_logout.IconVisible = true;
+            this.button_logout.IconZoom = 90D;
+            this.button_logout.IsTab = false;
+            this.button_logout.Location = new System.Drawing.Point(49, 165);
+            this.button_logout.Margin = new System.Windows.Forms.Padding(4);
+            this.button_logout.Name = "button_logout";
+            this.button_logout.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(85)))), ((int)(((byte)(143)))));
+            this.button_logout.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(154)))), ((int)(((byte)(213)))));
+            this.button_logout.OnHoverTextColor = System.Drawing.Color.WhiteSmoke;
+            this.button_logout.selected = false;
+            this.button_logout.Size = new System.Drawing.Size(100, 25);
+            this.button_logout.TabIndex = 14;
+            this.button_logout.Text = "End Session";
+            this.button_logout.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.button_logout.Textcolor = System.Drawing.Color.WhiteSmoke;
+            this.button_logout.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_logout.Click += new System.EventHandler(this.button_logout_Click);
+            // 
+            // lbl_second
+            // 
+            this.lbl_second.AutoSize = true;
+            this.lbl_second.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_second.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbl_second.Location = new System.Drawing.Point(116, 53);
+            this.lbl_second.Margin = new System.Windows.Forms.Padding(0);
+            this.lbl_second.Name = "lbl_second";
+            this.lbl_second.Size = new System.Drawing.Size(30, 24);
+            this.lbl_second.TabIndex = 13;
+            this.lbl_second.Text = "00";
+            // 
+            // lbl_minute
+            // 
+            this.lbl_minute.AutoSize = true;
+            this.lbl_minute.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_minute.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbl_minute.Location = new System.Drawing.Point(84, 53);
+            this.lbl_minute.Margin = new System.Windows.Forms.Padding(0);
+            this.lbl_minute.Name = "lbl_minute";
+            this.lbl_minute.Size = new System.Drawing.Size(30, 24);
+            this.lbl_minute.TabIndex = 11;
+            this.lbl_minute.Text = "00";
+            this.lbl_minute.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lbl_hour
+            // 
+            this.lbl_hour.AutoSize = true;
+            this.lbl_hour.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_hour.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbl_hour.Location = new System.Drawing.Point(51, 53);
+            this.lbl_hour.Margin = new System.Windows.Forms.Padding(0);
+            this.lbl_hour.Name = "lbl_hour";
+            this.lbl_hour.Size = new System.Drawing.Size(30, 24);
+            this.lbl_hour.TabIndex = 9;
+            this.lbl_hour.Text = "00";
+            this.lbl_hour.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lbl_end_time
+            // 
+            this.lbl_end_time.AutoSize = true;
+            this.lbl_end_time.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_end_time.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbl_end_time.Location = new System.Drawing.Point(102, 126);
+            this.lbl_end_time.Name = "lbl_end_time";
+            this.lbl_end_time.Size = new System.Drawing.Size(47, 13);
+            this.lbl_end_time.TabIndex = 6;
+            this.lbl_end_time.Text = "8:32 PM";
+            // 
+            // lbl_start_time
+            // 
+            this.lbl_start_time.AutoSize = true;
+            this.lbl_start_time.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_start_time.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbl_start_time.Location = new System.Drawing.Point(102, 104);
+            this.lbl_start_time.Name = "lbl_start_time";
+            this.lbl_start_time.Size = new System.Drawing.Size(47, 13);
+            this.lbl_start_time.TabIndex = 5;
+            this.lbl_start_time.Text = "8:00 PM";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.Control;
+            this.label2.Location = new System.Drawing.Point(46, 31);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(110, 16);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Time Remaining:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.Control;
+            this.label3.Location = new System.Drawing.Point(42, 126);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(55, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "End Time:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.Control;
+            this.label5.Location = new System.Drawing.Point(39, 104);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(58, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Start Time:";
+            // 
+            // lbl_minimize
+            // 
+            this.lbl_minimize.AutoSize = true;
+            this.lbl_minimize.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_minimize.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbl_minimize.Location = new System.Drawing.Point(190, 10);
+            this.lbl_minimize.Name = "lbl_minimize";
+            this.lbl_minimize.Size = new System.Drawing.Size(21, 20);
+            this.lbl_minimize.TabIndex = 14;
+            this.lbl_minimize.Text = "--";
+            this.lbl_minimize.Click += new System.EventHandler(this.lbl_minimize_Click);
+            // 
+            // client_timer
+            // 
+            this.client_timer.Interval = 1000;
+            this.client_timer.Tick += new System.EventHandler(this.client_timer_Tick);
+            // 
+            // timer_server_logout
+            // 
+            this.timer_server_logout.Interval = 1000;
+            this.timer_server_logout.Tick += new System.EventHandler(this.timer_server_logout_Tick);
+            // 
+            // panel_timer
+            // 
+            this.panel_timer.Controls.Add(this.lbl_time_catcher);
+            this.panel_timer.Controls.Add(this.pictureBox2);
+            this.panel_timer.Controls.Add(this.pictureBox1);
+            this.panel_timer.Controls.Add(this.panel2);
+            this.panel_timer.Controls.Add(this.lbl_minimize);
+            this.panel_timer.Location = new System.Drawing.Point(0, 2);
+            this.panel_timer.Name = "panel_timer";
+            this.panel_timer.Size = new System.Drawing.Size(223, 306);
+            this.panel_timer.TabIndex = 15;
+            // 
+            // lbl_time_catcher
+            // 
+            this.lbl_time_catcher.AutoSize = true;
+            this.lbl_time_catcher.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_time_catcher.ForeColor = System.Drawing.Color.Black;
+            this.lbl_time_catcher.Location = new System.Drawing.Point(32, 27);
+            this.lbl_time_catcher.Name = "lbl_time_catcher";
+            this.lbl_time_catcher.Size = new System.Drawing.Size(13, 13);
+            this.lbl_time_catcher.TabIndex = 15;
+            this.lbl_time_catcher.Text = "5";
+            this.lbl_time_catcher.Visible = false;
+            // 
             // form_Lockscreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(858, 463);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -427,6 +665,7 @@
             this.Controls.Add(this.panel_configure);
             this.Controls.Add(this.label_pc_no);
             this.Controls.Add(this.picturebox_slideshow);
+            this.Controls.Add(this.panel_timer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "form_Lockscreen";
@@ -441,6 +680,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picturebox_slideshow)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel_timer.ResumeLayout(false);
+            this.panel_timer.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -448,7 +693,6 @@
 
         #endregion
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
-        private System.Windows.Forms.Timer timer_shuffle;
         private System.Windows.Forms.Label label_pc_no;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse2;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse3;
@@ -466,7 +710,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem privateChatToolStripMenuItem;
         private System.Windows.Forms.Timer timer_load_server;
-        private System.Windows.Forms.Timer timer_get_time;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Timer timer_keepAlive;
         private System.Windows.Forms.Button button2;
@@ -475,6 +718,25 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.PictureBox picturebox_slideshow;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panel2;
+        private Bunifu.Framework.UI.BunifuFlatButton button_logout;
+        private System.Windows.Forms.Label lbl_second;
+        private System.Windows.Forms.Label lbl_minute;
+        private System.Windows.Forms.Label lbl_hour;
+        private System.Windows.Forms.Label lbl_end_time;
+        private System.Windows.Forms.Label lbl_start_time;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lbl_minimize;
+        private System.Windows.Forms.Timer client_timer;
+        private System.Windows.Forms.Timer timer_server_logout;
+        private System.Windows.Forms.Panel panel_timer;
+        private System.Windows.Forms.Label lbl_time_catcher;
+        public System.Windows.Forms.Timer timer_get_time;
+        public System.Windows.Forms.Timer timer_shuffle;
     }
 }
 

@@ -114,11 +114,9 @@ C:\Users\Alpuerto\Documents\GitHub\CULS-final\CULS-Client\CULS-Client\CULS-Clien
 C:\Users\Alpuerto\Documents\GitHub\CULS-final\CULS-Client\CULS-Client\CULS-Client\obj\Debug\CULS-Client.csprojAssemblyReference.cache
 C:\Users\Alpuerto\Documents\GitHub\CULS-final\CULS-Client\CULS-Client\CULS-Client\obj\Debug\CULS_Client.form_admin_setting.resources
 C:\Users\Alpuerto\Documents\GitHub\CULS-final\CULS-Client\CULS-Client\CULS-Client\obj\Debug\CULS_Client.form_Lockscreen.resources
-C:\Users\Alpuerto\Documents\GitHub\CULS-final\CULS-Client\CULS-Client\CULS-Client\obj\Debug\CULS_Client.form_PostLockscreen.resources
 C:\Users\Alpuerto\Documents\GitHub\CULS-final\CULS-Client\CULS-Client\CULS-Client\obj\Debug\CULS_Client.form_update_credential.resources
 C:\Users\Alpuerto\Documents\GitHub\CULS-final\CULS-Client\CULS-Client\CULS-Client\obj\Debug\CULS_Client.IP_Configuration.resources
 C:\Users\Alpuerto\Documents\GitHub\CULS-final\CULS-Client\CULS-Client\CULS-Client\obj\Debug\CULS_Client.Properties.Resources.resources
-C:\Users\Alpuerto\Documents\GitHub\CULS-final\CULS-Client\CULS-Client\CULS-Client\obj\Debug\CULS_Client.form_Timer.resources
 C:\Users\Alpuerto\Documents\GitHub\CULS-final\CULS-Client\CULS-Client\CULS-Client\obj\Debug\CULS-Client.csproj.GenerateResource.cache
 C:\Users\Alpuerto\Documents\GitHub\CULS-final\CULS-Client\CULS-Client\CULS-Client\obj\Debug\CULS-Client.csproj.CoreCompileInputs.cache
 C:\Users\Alpuerto\Documents\GitHub\CULS-final\CULS-Client\CULS-Client\CULS-Client\obj\Debug\CULS-Client.exe.manifest

@@ -199,7 +199,7 @@ namespace CULS_Client
             }
             catch (Exception ex)
             {
-              MessageBox.Show(ex.Message, "networkclient");
+              //MessageBox.Show(ex.Message, "networkclient");
 
                 ctThread.Abort();
                 clientSocket.Close();
@@ -278,7 +278,7 @@ namespace CULS_Client
             }
             catch (Exception ex)
             {
-                 MessageBox.Show(ex.Message, "networkclient");
+            //     MessageBox.Show(ex.Message, "networkclient");
             }
 
         }

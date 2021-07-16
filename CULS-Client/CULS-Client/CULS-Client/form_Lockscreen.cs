@@ -16,16 +16,26 @@ namespace CULS_Client
         string _title = "COMPUTER USAGE LIMITER SYSTEM";
         string _ini_path = Application.StartupPath + @"\IniFiles\Configuration.ini";
 
-      
+        double time;
+        bool flag_timeout = true;
+        int second, minute, hour;
+        static bool _flag_logout = true;
+        public static string _terminal_status = "IDLE";
+        public static string _time_remaining = "0";
+        public static string _UID = "empty";
+
         public form_Lockscreen()
         {
             InitializeComponent();
-         //   SC_orientation();
+            SC_orientation();
             cn = new SqlConnection(dbcon.GetConnection());
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormIsClosing);
             label_pc_no.Text = System.Environment.MachineName;
+            label_pc_no.Location = new Point(27, 25);
             timer_get_time.Start();
             timer_shuffle.Start();
+            centertimerform();
+            this.StartPosition = FormStartPosition.CenterScreen;
 
         }
 
@@ -47,7 +57,7 @@ namespace CULS_Client
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           
+            SC_orientation();
             button_hide_pass.Visible = false;
             SetMaximumLength(txt_username, 10);
             SetMaximumLength(txt_password, 10);
@@ -72,12 +82,7 @@ namespace CULS_Client
         }
         private void Button_Redirect_Click(object sender, EventArgs e)
         {
-            //Redirect to CULS_timer form
-            form_Timer Load = new form_Timer();
-            {
-                Load.Show();
-                this.Hide();
-            }
+           
         }
         public void SC_orientation()
         {
@@ -91,8 +96,15 @@ namespace CULS_Client
             this.ClientSize.Height / 2 - panel_configure.Size.Height / 2);
             panel_configure.Anchor = AnchorStyles.None;
 
-        }
 
+        }
+        private void centertimerform()
+        {
+            panel_timer.Location = new Point(
+    this.ClientSize.Width / 2 - panel_timer.Size.Width / 2,
+    this.ClientSize.Height / 2 - panel_timer.Size.Height / 2);
+            panel_timer.Anchor = AnchorStyles.None;
+        }
         private void button_configure_Click(object sender, EventArgs e)
         {
           //  Admin_Login f1 = new Admin_Login();
@@ -131,7 +143,6 @@ namespace CULS_Client
         int _shutdown_counter=3;
         private void btn_signin_Click(object sender, EventArgs e)
         {
-            timer_get_time.Stop();
             timer_get_time.Stop();
             timer_shuffle.Stop();
             try
@@ -338,9 +349,7 @@ namespace CULS_Client
             label_close.ForeColor = Color.DarkGray;
         }
 
-        public static string _terminal_status = "IDLE";
-        public static string _time_remaining = "0";
-        public static string _UID = "empty";
+
         private void timer_get_time_Tick(object sender, EventArgs e)
         {
             //try
@@ -372,12 +381,15 @@ namespace CULS_Client
             }         
             if (_terminal_status== "LIMITED"|| _terminal_status == "UNLIMITED"  )
             {
-                timer_get_time.Stop();
                 timer_shuffle.Stop();
+                timer_get_time.Enabled = false;
                 //   MessageBox.Show(_terminal_status);
-                form_Timer f1 = new form_Timer();              
-                f1.Show();
-                this.Hide();
+                //form_Timer f1 = new form_Timer();              
+                //f1.Show();
+                //this.Hide();
+
+                //---timerorientation
+                TimerOrientation();
             }
         }
         private void button1_Click(object sender, EventArgs e)
@@ -410,6 +422,382 @@ namespace CULS_Client
         private void timer_load_server_Tick(object sender, EventArgs e)
         {
 
+        }
+        private void TimerOrientation()
+        {
+            //oritentation
+            //this.TopMost = false;
+            
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Normal;
+
+            panel_configure.Visible = false;
+            label_pc_no.Visible = false;
+            picturebox_slideshow.Visible = false;
+            //set values
+           this.Size = new Size(223, 306);
+            this.CenterToScreen();
+            StartTime();
+            timer_server_logout.Enabled=true;
+        }
+        private void LockscreenOrientation()
+        {
+            lbl_hour.Text = "00";
+            lbl_minute.Text = "00";
+            lbl_second.Text = "00";
+            lbl_hour.Font = new Font("Microsoft Sans Serif", 12);
+            lbl_minute.Font = new Font("Microsoft Sans Serif", 12);
+            lbl_second.Font = new Font("Microsoft Sans Serif", 12);
+            timer_get_time.Enabled = true;
+            label_pc_no.Visible = true;
+            picturebox_slideshow.Visible = true;
+            label_pc_no.Location = new Point(27, 25);
+            //set values
+            SC_orientation();
+            client_timer.Enabled = false;
+            timer_server_logout.Enabled = false;
+            timer_shuffle.Start();
+
+
+        }
+        private void lbl_minimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void button_logout_Click(object sender, EventArgs e)
+        {
+            string _terminal = System.Environment.MachineName;
+            double time_to_int = 0;
+            double cal2 = minute;
+            double cal3 = hour;
+            if (MessageBox.Show("Are you sure you want to logout?", _title, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+            {
+                if (hour > 0)
+                {
+                    //convert time to integer
+                    time_to_int = (cal3 + (cal2 / 60));
+                    time_to_int = (time_to_int * 60) + 1;
+                    string _remaining_time = time_to_int.ToString();
+                    // MessageBox.Show(_remaining_time);
+                    //receiveTextSplit[1]=logout
+                    //receiveTextSplit[2]=terminal name
+                    //receiveTextSplit[3]=terminal status
+                    //receiveTextSplit[4]=UID
+                    //receiveTextSplit[5]=remaining time
+                    NetworkClient.SendCommandToServer("COMMAND|LOGOUT|" + _terminal + "|" + _terminal_status + "|" + _UID + "|" + _remaining_time + "|");
+
+                    Timer_Client.UpdateTerminalStatus("IDLE", "0", "EMPTY");
+
+                }
+                else
+                {
+                    time_to_int = minute;
+                    string _remaining_time = time_to_int.ToString();
+
+                    //receiveTextSplit[1]=logout
+                    //receiveTextSplit[2]=terminal name
+                    //receiveTextSplit[3]=terminal status
+                    //receiveTextSplit[4]=UID
+                    //receiveTextSplit[5]=remaining time
+
+                    NetworkClient.SendCommandToServer("COMMAND|LOGOUT|" + _terminal + "|" + _terminal_status + "|" + _UID + "|" + _remaining_time + "|");
+
+                    Timer_Client.UpdateTerminalStatus("IDLE", "0", "EMPTY");
+                }
+               
+                client_timer.Stop();
+                flag_timeout = true;
+                LockscreenOrientation();
+            }
+        
+            }
+
+        private void StartTime()
+        {
+            try
+            {
+                var parser = new FileIniDataParser();
+                IniData exec_ini = parser.ReadFile(_ini_path);
+                _terminal_status = exec_ini["Terminal Status"]["terminal_status"];
+                _time_remaining = exec_ini["Terminal Status"]["time_remaining"];
+                _UID = exec_ini["Terminal Status"]["UID"];
+         
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, _title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            if (_terminal_status == "LIMITED")
+            {
+                lbl_minute.Visible = true;
+                lbl_second.Visible = true;
+                lbl_hour.Text = "00";
+                lbl_hour.Font = new Font("Microsoft Sans Serif", 12);
+                lbl_minute.Font = new Font("Microsoft Sans Serif", 12);
+                lbl_second.Font = new Font("Microsoft Sans Serif", 12);
+                SessionLimited();
+            }
+            else if (_terminal_status == "UNLIMITED")
+            {
+                DateTime _start_time = DateTime.Now;
+                lbl_start_time.Text = _start_time.ToString("HH: mm tt");
+                lbl_end_time.Text = "00:00 AM";
+                lbl_hour.Text = "UNLIMITED";
+                lbl_hour.Font = new Font("Microsoft Sans Serif", 12);
+                lbl_minute.Visible = false;
+                lbl_second.Visible = false;
+            }
+        }
+
+        private void TimerTick()
+        {
+            //Until the second is greater than 0 it will decrement the time
+
+            second--;
+
+
+           // MessageBox.Show(second.ToString());
+            //when the timer reach the 5 minute time it will display a warning message 
+
+            if (hour == 0 && minute < 5)
+            {
+                string _terminal = System.Environment.MachineName;
+                string _terminal_status_timeout = "TIMEOUT";
+                if (flag_timeout)
+                {
+                    PopupNotifier warning_5mins = new PopupNotifier();
+                    warning_5mins.Image = Properties.Resources.C_blue_logo_v2;
+                    warning_5mins.TitleText = "CULS Client";
+                    warning_5mins.ContentText = "Terminal: " + System.Environment.MachineName + ">>Less than 5 minutes left";
+                    warning_5mins.Popup();
+                    NetworkClient.SendCommandToServer("COMMAND|TIMEOUT|" + _terminal + "|" + _terminal_status_timeout + "|");
+                    flag_timeout = false;
+                }
+            }
+            if (hour == 0 && minute == 0 && second == 0)
+            {
+
+                string _remaining_time = "0";
+                string _terminal = System.Environment.MachineName;
+                NetworkClient.SendCommandToServer("COMMAND|LOGOUT|" + _terminal + "|" + _terminal_status + "|" + _UID + "|" + _remaining_time + "|");
+                Timer_Client.UpdateTerminalStatus("IDLE", "0", "EMPTY");
+                client_timer.Stop();
+                flag_timeout = true;
+                LockscreenOrientation();
+            }
+            else if (second < 0 && minute > 0)
+            {
+                second = 59;
+                minute -= 1;
+            }
+            if (minute < 0 && hour > 0)
+            {
+                minute = 59;
+                hour -= 1;
+            }
+            if (second < 0 && minute == 0 && hour > 0)
+            {
+                minute = 59;
+                second = 59;
+                hour -= 1;
+
+            }
+
+            Digit_counter DC_count = new Digit_counter();
+
+            //Digit Counter Min
+            int dc_minute = minute;
+            int count_min = 0;
+            while (dc_minute != 0)
+            {
+                dc_minute = dc_minute / 10;
+                ++count_min;
+            }
+            DC_count.DC_min = count_min.ToString();
+
+            if (count_min == 2)
+            {
+                lbl_minute.Text = minute.ToString() + ":";
+
+            }
+            else
+            {
+                lbl_minute.Text = "0" + minute.ToString() + ":";
+            }
+
+
+            //Digit Counter Sec
+            int dc_sec = second;
+            int count_sec = 0;
+            while (dc_sec != 0)
+            {
+                dc_sec = dc_sec / 10;
+                ++count_sec;
+            }
+            DC_count.DC_sec = count_sec.ToString();
+
+            if (count_sec == 2)
+            {
+                lbl_second.Text = second.ToString();
+
+            }
+            else
+            {
+                lbl_second.Text = "0" + second.ToString();
+            }
+
+            //Digit Counter Hour
+            int dc_hour = hour;
+            int count_hour = 0;
+            while (dc_sec != 0)
+            {
+                dc_hour = dc_hour / 10;
+                ++count_hour;
+            }
+            DC_count.DC_hour = count_hour.ToString();
+
+            if (count_hour == 2)
+            {
+                lbl_hour.Text = hour.ToString() + ":";
+
+            }
+            else
+            {
+                lbl_hour.Text = "0" + hour.ToString() + ":";
+            }
+
+            //lbl_second.Text = second.ToString();
+            //lbl_minute.Text = minute.ToString();
+            //lbl_hour.Text = hour.ToString();
+            lbl_time_catcher.Text = time.ToString();
+        }
+
+        private const int CS_DROPSHADOW = 0x20000;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CS_DROPSHADOW;
+                return cp;
+            }
+        }
+        public void ServerLogout()
+        {
+            string _terminal = System.Environment.MachineName;
+            double time_to_int = 0;
+            double cal2 = minute;
+            double cal3 = hour;
+
+            if (hour > 0)
+            {
+                //convert time to integer
+                time_to_int = (cal3 + (cal2 / 60));
+                time_to_int = (time_to_int * 60) + 1;
+                string _remaining_time = time_to_int.ToString();
+
+                //receiveTextSplit[1]=logout
+                //receiveTextSplit[2]=terminal name
+                //receiveTextSplit[3]=terminal status
+                //receiveTextSplit[4]=UID
+                //receiveTextSplit[5]=remaining time
+
+                NetworkClient.SendCommandToServer("COMMAND|LOGOUT|" + _terminal + "|" + _terminal_status + "|" + _UID + "|" + _remaining_time + "|");
+                Timer_Client.UpdateTerminalStatus("IDLE", "0", "EMPTY");
+
+            }
+            else
+            {
+                time_to_int = minute;
+                string _remaining_time = time_to_int.ToString();
+
+                //receiveTextSplit[1]=logout
+                //receiveTextSplit[2]=terminal name
+                //receiveTextSplit[3]=terminal status
+                //receiveTextSplit[4]=UID
+                //receiveTextSplit[5]=remaining time
+
+                NetworkClient.SendCommandToServer("COMMAND|LOGOUT|" + _terminal + "|" + _terminal_status + "|" + _UID + "|" + _remaining_time + "|");
+                Timer_Client.UpdateTerminalStatus("IDLE", "0", "EMPTY");
+
+            }
+            flag_timeout = true;
+            client_timer.Stop();
+            LockscreenOrientation();
+        }
+
+        private void client_timer_Tick(object sender, EventArgs e)
+        {
+            TimerTick();   
+        }
+
+        private void timer_server_logout_Tick(object sender, EventArgs e)
+        {
+            ServerLogoutTick();
+        }
+
+        private void ServerLogoutTick()
+        {
+            Logout fc = new Logout();
+            string _com_logout = "COMMAND|LOGOUT";
+            try
+            {
+                if (_com_logout == fc.Logout_command)
+                {
+                    timer_server_logout.Stop();
+                    ServerLogout();
+                    fc.Logout_command = "NULL";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, _title);
+            }
+        }
+        public void SessionLimited()
+        {
+
+            time = int.Parse(_time_remaining);
+           // MessageBox.Show(time.ToString());
+            double cal = time / 60;
+            if (cal >= 1)
+            {
+                hour = (int)Math.Floor(cal);
+                cal = cal - (int)Math.Floor(cal);
+                minute = (int)Math.Ceiling(cal * 60);
+                if (minute > 0)
+                {
+                    minute -= 1;
+                    second = 60;
+                }
+                else if (second == 0 && minute == 0 && hour > 0)
+                {
+                    minute = 59;
+                    second = 60;
+                    hour -= 1;
+                }
+                else
+                {
+                    second = 0;
+                }
+            }
+            else
+            {
+                hour = 0;
+                minute = (int)time - 1;
+                second = 60;
+            }
+            DateTime _start_time = DateTime.Now;
+            lbl_start_time.Text = _start_time.ToString("HH:mm tt");
+
+            //Get the value of end time
+            DateTime _end_time = DateTime.Now.AddMinutes(minute + 1);
+            _end_time = _end_time.AddHours(hour);
+            lbl_end_time.Text = _end_time.ToString("HH:mm tt");
+
+            //when computation is done setting is variables are good then the timer will start
+            client_timer.Enabled=true;
         }
     }
 }

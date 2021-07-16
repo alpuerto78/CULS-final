@@ -10,25 +10,30 @@ using System.Windows.Forms;
 using CrystalDecisions.Shared;
 using CrystalDecisions.CrystalReports.Engine;
 
+
 namespace CULS_SERVER
 {
     public partial class form_annual_logs_view : Form
     {
-        
         public form_annual_logs_view()
         {
             InitializeComponent();
+            onloadReport();
         }
         string _title = "COMPUTER USAGE LIMITER SYSTEM";
         private void form_annual_logs_view_Load(object sender, EventArgs e)
+        {
+          
+        }
+        private void onloadReport()
         {
             try
             {
                 Annual_Report_Fields handler = new Annual_Report_Fields();
                 ReportDocument cryRpt = new ReportDocument();
-                cryRpt.Load(Application.StartupPath + @"\Reports\reports_annual_logs_ver.rpt");
+                cryRpt.Load(Application.StartupPath + @"\Reports\reports_annual_logs.rpt");
                 //----------------------------------------------------//
-                //current date
+                //current year
                 ParameterFieldDefinitions crParameterFieldDefinitions;
                 ParameterFieldDefinition crParameterFieldDefinition;
                 ParameterValues crParameterValues = new ParameterValues();
@@ -40,6 +45,8 @@ namespace CULS_SERVER
                 crParameterValues.Clear();
                 crParameterValues.Add(crParameterDiscreteValue);
                 crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
+
+
                 //----------------------------------------------------//
                 //area
                 ParameterFieldDefinitions crParameterFieldDefinitions2;
@@ -74,7 +81,7 @@ namespace CULS_SERVER
                 ParameterFieldDefinition crParameterFieldDefinition4;
                 ParameterValues crParameterValues4 = new ParameterValues();
                 ParameterDiscreteValue crParameterDiscreteValue4 = new ParameterDiscreteValue();
-           
+
                 crParameterDiscreteValue4.Value = handler.Annual_report_field_noted.ToUpper();
                 crParameterFieldDefinitions4 = cryRpt.DataDefinition.ParameterFields;
                 crParameterFieldDefinition4 = crParameterFieldDefinitions4["Univ_librarian_annual"];
@@ -84,8 +91,8 @@ namespace CULS_SERVER
                 crParameterValues4.Add(crParameterDiscreteValue4);
                 crParameterFieldDefinition4.ApplyCurrentValues(crParameterValues4);
 
-                crystalReportViewer2.ReportSource = cryRpt;
-                crystalReportViewer2.Refresh();
+                crystalReportViewer1.ReportSource = cryRpt;
+                crystalReportViewer1.Refresh();
             }
             catch (Exception ex)
             {

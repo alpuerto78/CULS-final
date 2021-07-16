@@ -29,8 +29,8 @@ namespace CULS_Client
                         //input receiveTextSplit[3] ==time remaining
                         //input receiveTextSplit[4] ==User RFID
                         //input receiveTextSplit[5] ==username
-                        DB_conn dbcon = new DB_conn();
-                        cn = new SqlConnection(dbcon.GetConnection());
+                        //DB_conn dbcon = new DB_conn();
+                        //cn = new SqlConnection(dbcon.GetConnection());
                         Timer_Client.UpdateTerminalStatus(receiveTextSplit[2], receiveTextSplit[3], receiveTextSplit[4]);
                     }
                     
@@ -39,14 +39,14 @@ namespace CULS_Client
                 {
                     //cmd to restart pc 
                     CmdClass cmd = new CmdClass();
-                   NetworkClient.close_client();
+                   //NetworkClient.close_client();
                     cmd.ExecuteCommand("shutdown -r");                
                 }
                 else if (receiveTextSplit[1] == "SHUTDOWN")
                 {
                     //cmd to restart pc 
                     CmdClass cmd = new CmdClass();
-                    NetworkClient.close_client();
+                    //NetworkClient.close_client();
                     cmd.ExecuteCommand("shutdown -s");
                 }
                 else if (receiveTextSplit[1] == "LOGOUT")
